@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdwg6xevi8008"]
+
+[ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
+[ext_resource type="PackedScene" uid="uid://l431yi2g0ukb" path="res://scenes/prefabs/player.tscn" id="2_6iamk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nsrm0"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Water" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(0, -60)
+script = ExtResource("1_ksju7")
+water_size = Vector2(200, 60)
+
+[node name="Player" parent="." instance=ExtResource("2_6iamk")]
+position = Vector2(-60, -123)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_nsrm0")
+
+[node name="Hills" type="StaticBody2D" parent="."]
+z_index = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hills"]
+polygon = PackedVector2Array(-556, -43, -445, -66, -257, -74, -219, -87, -1, -64, 28, -10, 86, -3, 186, -7, 202, -66, 233, -75, 283, -78, 311, -71, 313, 7, 313, 28, -560, 16)
