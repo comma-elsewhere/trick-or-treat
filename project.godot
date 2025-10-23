@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Fish or Treat"
+run/main_scene="uid://bdwg6xevi8008"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +25,10 @@ GConst="*res://scripts/global/global_const.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+CanSplash=""
 
 [input]
 
