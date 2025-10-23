@@ -1,9 +1,410 @@
-[gd_scene format=3 uid="uid://d1masshw12umj"]
+[gd_scene load_steps=4 format=3 uid="uid://cppk3mbfwi7ge"]
 
-[node name="MainMenu" type="Control"]
+[ext_resource type="Script" uid="uid://dpobkvi2m2uja" path="res://scripts/gui/video.gd" id="1_leamy"]
+[ext_resource type="Script" uid="uid://bwtlmqo8fphv5" path="res://scripts/gui/audio.gd" id="2_721jg"]
+[ext_resource type="Script" uid="uid://bnxn0wmrc0rge" path="res://scripts/gui/controls.gd" id="3_721jg"]
+
+[node name="MenuUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="MainMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "New Game"
+
+[node name="Control2" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="MainMenu/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+disabled = true
+text = "Continue"
+
+[node name="Control3" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MainMenu/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Settings"
+
+[node name="Control4" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MainMenu/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Quit"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Video" type="Button" parent="Settings/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Video"
+
+[node name="Control2" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Audio" type="Button" parent="Settings/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Audio"
+
+[node name="Control3" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="Settings/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Controls"
+
+[node name="Video" type="VBoxContainer" parent="." node_paths=PackedStringArray("resolution", "fullscreen", "borderless")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("1_leamy")
+resolution = NodePath("HBoxContainer/Resolution")
+fullscreen = NodePath("HBoxContainer2/Fullscreen")
+borderless = NodePath("HBoxContainer3/Borderless")
+
+[node name="Label" type="Label" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Video"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Video"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Video/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Fullscreen"
+
+[node name="Fullscreen" type="CheckBox" parent="Video/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Video"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Video/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Borderless"
+
+[node name="Borderless" type="CheckBox" parent="Video/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="BackButton" type="Button" parent="Video"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+
+[node name="Audio" type="VBoxContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("2_721jg")
+master_slider = NodePath("HBoxContainer/Master")
+music_slider = NodePath("HBoxContainer2/Music")
+sfx_slider = NodePath("HBoxContainer3/SFX")
+
+[node name="Label" type="Label" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Audio"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Master"
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Audio/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="BackButton" type="Button" parent="Audio"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+script = ExtResource("3_721jg")
+
+[node name="Label" type="Label" parent="Controls"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Jump"
+
+[node name="Jump" type="Button" parent="Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Left"
+
+[node name="Left" type="Button" parent="Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Right"
+
+[node name="Right" type="Button" parent="Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Interact"
+
+[node name="Interact" type="Button" parent="Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "E"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Fishing Rod"
+
+[node name="Fishing" type="Button" parent="Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Space"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Inventory"
+
+[node name="Inventory" type="Button" parent="Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shift"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Pause"
+
+[node name="Pause" type="Button" parent="Controls/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Esc"
+
+[node name="BackButton" type="Button" parent="Controls"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
