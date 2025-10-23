@@ -18,7 +18,7 @@ func _ready() -> void:
 	]
 	
 	for res in resolution_options:
-		resolution.add_item("%xd%x" % [res.x, res.y])
+		resolution.add_item("%dx%d" % [res.x, res.y])
 		
 	load_current_settings()
 		
