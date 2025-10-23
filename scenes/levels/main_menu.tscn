@@ -1,16 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cppk3mbfwi7ge"]
+[gd_scene load_steps=5 format=3 uid="uid://cppk3mbfwi7ge"]
 
+[ext_resource type="Script" uid="uid://c8j0okerfjkfj" path="res://scripts/gui/main_menu.gd" id="1_geflf"]
 [ext_resource type="Script" uid="uid://dpobkvi2m2uja" path="res://scripts/gui/video.gd" id="1_leamy"]
 [ext_resource type="Script" uid="uid://bwtlmqo8fphv5" path="res://scripts/gui/audio.gd" id="2_721jg"]
 [ext_resource type="Script" uid="uid://bnxn0wmrc0rge" path="res://scripts/gui/controls.gd" id="3_721jg"]
 
-[node name="MenuUI" type="Control"]
+[node name="MenuControl" type="Control" node_paths=PackedStringArray("main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_geflf")
+main_menu = NodePath("MainMenu")
+main_settings = NodePath("Settings")
+video_settings = NodePath("Video")
+audio_settings = NodePath("Audio")
+control_map = NodePath("Controls")
+settings_button = NodePath("MainMenu/Control3/Settings")
+video_button = NodePath("Settings/Control/Video")
+audio_button = NodePath("Settings/Control2/Audio")
+controls_button = NodePath("Settings/Control3/Controls")
+return_button = NodePath("Settings/Control4/Return")
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 visible = false
@@ -140,6 +152,20 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(110, 25)
 text = "Controls"
+
+[node name="Control4" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Return" type="Button" parent="Settings/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+text = "Return to Menu"
 
 [node name="Video" type="VBoxContainer" parent="." node_paths=PackedStringArray("resolution", "fullscreen", "borderless")]
 visible = false
@@ -289,7 +315,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
 
-[node name="Controls" type="VBoxContainer" parent="."]
+[node name="Controls" type="VBoxContainer" parent="." node_paths=PackedStringArray("jump_button", "left_button", "right_button", "interact_button", "fish_button", "inventory_button")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,6 +331,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 script = ExtResource("3_721jg")
+jump_button = NodePath("HBoxContainer3/Jump")
+left_button = NodePath("HBoxContainer/Left")
+right_button = NodePath("HBoxContainer2/Right")
+interact_button = NodePath("HBoxContainer6/Interact")
+fish_button = NodePath("HBoxContainer7/Fishing")
+inventory_button = NodePath("HBoxContainer5/Inventory")
 
 [node name="Label" type="Label" parent="Controls"]
 custom_minimum_size = Vector2(200, 0)
@@ -375,7 +408,7 @@ text = "Fishing Rod"
 [node name="Fishing" type="Button" parent="Controls/HBoxContainer7"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Space"
+text = "S"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Controls"]
 layout_mode = 2
@@ -390,21 +423,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Shift"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Controls"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Controls/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Pause"
-
-[node name="Pause" type="Button" parent="Controls/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Esc"
-
 [node name="BackButton" type="Button" parent="Controls"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[connection signal="button_up" from="MainMenu/Control/NewGame" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="MainMenu/Control4/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Video/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Audio/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Controls/BackButton" to="." method="_on_back_button_button_up"]
