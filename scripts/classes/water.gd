@@ -143,7 +143,6 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void:
 	var index: int = int(clamp(local_x_pos / segment_width, 0, segment_count - 1))
 	segment_data[index]["velocity"] = splash_velocity
 	recently_splashed = true
-	GSig.rock_the_boat.emit(splash_pos, splash_velocity)
 	set_process(true)
 	
 func _on_body_entered(body: Node2D) -> void:
