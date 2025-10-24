@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=5 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://l431yi2g0ukb" path="res://scenes/prefabs/player.tscn" id="2_6iamk"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
+[ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
 
 [node name="Level" type="Node2D"]
 
@@ -11,18 +11,37 @@
 z_index = 1
 position = Vector2(0, -60)
 script = ExtResource("1_ksju7")
-water_size = Vector2(200, 60)
+water_size = Vector2(2500, 250)
+segment_count = 512
+player_splash_multiplier = 0.15
+wave_energy_loss = 0.02
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+z_index = 1
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-305, -98, -113, -87, 71, -63, 204, 6, 289, 29, 508, 137, 1009, 175, 2514, 164, 2511, 398, -1129, 410, -1129, -111)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+polygon = PackedVector2Array(-1138, -109, -305, -99, -109, -87, 69, -61, 503, 149, 2511, 162, 2511, 389, -1128, 407)
 
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
+z_index = -1
 position = Vector2(-60, -123)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_nsrm0")
-
-[node name="Hills" type="StaticBody2D" parent="."]
+[node name="Camera" type="Camera2D" parent="Player"]
 z_index = 1
+position = Vector2(32, 36)
+offset = Vector2(0, -50)
+limit_left = -1100
+limit_right = 2455
+limit_bottom = 140
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hills"]
-polygon = PackedVector2Array(-556, -43, -445, -66, -257, -74, -219, -87, -1, -64, 28, -10, 86, -3, 186, -7, 202, -66, 233, -75, 283, -78, 311, -71, 313, 7, 313, 28, -560, 16)
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
+
+[node name="HUD" parent="Player/Camera/CanvasLayer" instance=ExtResource("3_b2cq8")]
+
+[node name="Boat" parent="." instance=ExtResource("4_xb4v1")]
+z_index = 0
+position = Vector2(218, -34)
