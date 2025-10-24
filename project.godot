@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="Fish or Treat"
-run/main_scene="uid://tr141j3qjva"
 run/main_scene="uid://cppk3mbfwi7ge"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
