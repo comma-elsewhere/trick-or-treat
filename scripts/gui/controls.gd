@@ -12,7 +12,7 @@ const ACTIONS = {
 	"left": "left",
 	"right": "right",
 	"interact": "interact",
-	"fishing_rod": "fishing_rod",
+	"attack": "attack",
 	"inventory": "inventory",
 }
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 	left_button.button_up.connect(_on_rebind_button_pressed.bind("left"))
 	right_button.button_up.connect(_on_rebind_button_pressed.bind("right"))
 	interact_button.button_up.connect(_on_rebind_button_pressed.bind("interact"))
-	fish_button.button_up.connect(_on_rebind_button_pressed.bind("fishing_rod"))
+	fish_button.button_up.connect(_on_rebind_button_pressed.bind("attack"))
 	inventory_button.button_up.connect(_on_rebind_button_pressed.bind("inventory"))
 
 func _input(event: InputEvent) -> void:
@@ -48,7 +48,7 @@ func _get_button(input_name: String) -> Button:
 		"left": return left_button
 		"right": return right_button
 		"interact": return interact_button
-		"fishing_rod": return fish_button
+		"attack": return fish_button
 		"inventory": return inventory_button
 		_: return null
 		
