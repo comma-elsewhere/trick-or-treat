@@ -45,4 +45,3 @@ limit_bottom = 140
 [node name="Boat" parent="." instance=ExtResource("4_xb4v1")]
 z_index = 0
 position = Vector2(257, -30)
-pos_y = -30.0
