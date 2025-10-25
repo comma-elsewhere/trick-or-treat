@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc4gcg68praqx"]
+
+[ext_resource type="Script" uid="uid://l8gu2kyrvqfm" path="res://scripts/gui/shop_item.gd" id="1_3cr3e"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f1n2c"]
+size = Vector2(200, 200)
+
+[node name="ShopItem" type="VBoxContainer"]
+script = ExtResource("1_3cr3e")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+icon = SubResource("PlaceholderTexture2D_f1n2c")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="Price" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "$Price"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
