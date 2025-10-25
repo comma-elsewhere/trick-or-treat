@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=13 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://l431yi2g0ukb" path="res://scenes/prefabs/player.tscn" id="2_6iamk"]
 [ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
+[ext_resource type="Script" uid="uid://cxrhphrxluw50" path="res://scripts/classes/fishing_manager.gd" id="5_d4w6o"]
+[ext_resource type="PackedScene" uid="uid://tr141j3qjva" path="res://scenes/gui/fishing_minigame.tscn" id="6_mbbpy"]
+[ext_resource type="Script" uid="uid://b8snc6akyrx32" path="res://scripts/classes/fish_type.gd" id="7_7pb6i"]
+[ext_resource type="Script" uid="uid://c0c8i8msdv0c5" path="res://scripts/classes/fishing_zone.gd" id="7_mbbpy"]
+[ext_resource type="Resource" uid="uid://bxlx5j5i2ljcm" path="res://resources/item_pool/carp.tres" id="8_xfk5q"]
+[ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="9_qogh7"]
+[ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="10_8iyoh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxo3"]
+size = Vector2(2185, 149)
 
 [node name="Level" type="Node2D"]
 
@@ -46,3 +56,19 @@ limit_bottom = 140
 z_index = 0
 position = Vector2(257, -30)
 pos_y = -30.0
+
+[node name="fishing_manager" type="Node" parent="."]
+script = ExtResource("5_d4w6o")
+fishing_minigame_scene = ExtResource("6_mbbpy")
+available_fish = Array[ExtResource("7_7pb6i")]([ExtResource("8_xfk5q"), ExtResource("9_qogh7")])
+default_rod = ExtResource("10_8iyoh")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("7_mbbpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1398.5, -89.5)
+shape = SubResource("RectangleShape2D_ouxo3")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

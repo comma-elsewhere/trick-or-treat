@@ -5,7 +5,7 @@ signal fishing_finished(success: bool, fish: FishType, value: int)
 @export var fish: FishType
 @export var rod: RodType
  
-@onready var root_ui: Control            = %control
+@onready var root_ui: Control            = %Control
 @onready var catch_area: Control         = %catchArea
 @onready var bar_track: Control          = %bar_track
 @onready var catch_bar: ColorRect        = %catchBar
@@ -17,7 +17,7 @@ signal fishing_finished(success: bool, fish: FishType, value: int)
 @onready var sfx_catch: AudioStreamPlayer = %SFX2
 @onready var sfx_fail: AudioStreamPlayer  = %SFX3
  
-const BASE_BAR_HEIGHT := 60.0
+const BASE_BAR_HEIGHT := 80.0
 const BASE_HOOK_WINDOW := 1
 const BASE_ESCAPE_DRAIN := 22.0
 const PROGRESS_GAIN := 28.0

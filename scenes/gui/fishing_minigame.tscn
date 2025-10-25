@@ -1,14 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://tr141j3qjva"]
+[gd_scene load_steps=12 format=3 uid="uid://tr141j3qjva"]
 
 [ext_resource type="Script" uid="uid://kp5yqbiub7oq" path="res://scripts/classes/fishing_minigame.gd" id="1_atuv8"]
-[ext_resource type="Resource" uid="uid://bxlx5j5i2ljcm" path="res://carp.tres" id="2_y0pwh"]
-[ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://basic_pole.tres" id="3_03kqu"]
+[ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="2_y0pwh"]
+[ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="3_03kqu"]
 [ext_resource type="Texture2D" uid="uid://c6v1t2b2mk4b5" path="res://assets/items/fish arapaima.png" id="4_y0pwh"]
+[ext_resource type="Shader" uid="uid://dyirvx7eh4734" path="res://shaders/bg_shader.gdshader" id="5_03kqu"]
+[ext_resource type="Texture2D" uid="uid://bcol5wf7divdl" path="res://assets/backgrounds/Portal.png" id="5_nnu1u"]
+[ext_resource type="Texture2D" uid="uid://devnw4y3d333l" path="res://assets/backgrounds/monocromaticopj.png" id="6_ror43"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s140s"]
+shader = ExtResource("5_03kqu")
+shader_parameter/screen_height = 640.0
+shader_parameter/amplitude = 0.075
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/palette = ExtResource("6_ror43")
+shader_parameter/palette_speed = 0.1
+
+[sub_resource type="Shader" id="Shader_y0pwh"]
+code = "/* 
+Earthbound battle backgrounds shader with scrolling effect and palette cycling like in the original game.
+@retr0_dev
+	
+Apply the shader to a TextureRect or a Sprite. Use a texture with some shapes in a transparent background for best results.
+You can then use a ColorRect or another method to paint the background.
+You can use the shader on multiple TextureRects and obtain a double-buffer effect tweaking the values for each one, remember to Make Unique the shader material.
+*/
+shader_type canvas_item;
+
+uniform float screen_height = 640.0;
+uniform float amplitude = 0.075;
+uniform float frequency = 10.0;
+uniform float speed = 2.0;
+uniform float amplitude_vertical = 0.0;
+uniform float frequency_vertical = 0.0;
+uniform float speed_vertical = 0.0;
+uniform vec2 scroll_direction = vec2(0.0, 0.0);
+uniform float scrolling_speed = 0.08;
+uniform bool enable_palette_cycling = false;
+uniform bool enable_scan_lines = true;
+uniform sampler2D palette;
+uniform float palette_speed = 0.1;
+
+void fragment()
+{
+	float diff_x = amplitude * sin((frequency * UV.y) + (speed * TIME));
+	float diff_y = amplitude_vertical * sin((frequency_vertical * UV.y)  + (speed_vertical * TIME));
+	vec2 scroll = scroll_direction * TIME * scrolling_speed;
+	vec4 tex = texture(TEXTURE, vec2(UV.x + diff_x, UV.y + diff_y) + scroll);
+	float palette_swap = mod(tex.r - TIME * palette_speed, 1.0);
+	
+	if (enable_palette_cycling)
+	{
+		COLOR = vec4(texture(palette, vec2(palette_swap, 0)).rgb, tex.a);
+	}
+	else COLOR = tex;
+	if (enable_scan_lines) COLOR = mix(vec4(0.0), COLOR, float(int(UV.y * screen_height) % 2));
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03kqu"]
+shader = SubResource("Shader_y0pwh")
+shader_parameter/screen_height = 640.0
+shader_parameter/amplitude = 0.075
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.5
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 1.0
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/palette = ExtResource("6_ror43")
+shader_parameter/palette_speed = 0.1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3u1oq"]
 
 [node name="FishingMinigame" type="CanvasLayer"]
 script = ExtResource("1_atuv8")
 fish = ExtResource("2_y0pwh")
 rod = ExtResource("3_03kqu")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.09019608)
+material = SubResource("ShaderMaterial_s140s")
+offset_right = 1284.0
+offset_bottom = 716.0
+texture = ExtResource("5_nnu1u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.019607844)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_03kqu")
+offset_right = 1287.0
+offset_bottom = 719.0
+texture = SubResource("ViewportTexture_3u1oq")
 
 [node name="Control" type="Control" parent="."]
 unique_name_in_owner = true
@@ -72,14 +165,14 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.48202753
-anchor_top = 0.8525455
-anchor_right = 0.48202753
-anchor_bottom = 0.8525455
+anchor_left = 0.50955045
+anchor_top = 0.3411818
+anchor_right = 0.5275229
+anchor_bottom = 0.34118184
 offset_left = -38.041
 offset_top = -13.024
-offset_right = 37.959
-offset_bottom = 12.976
+offset_right = 36.0
+offset_bottom = 12.975998
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_y0pwh")
