@@ -51,5 +51,5 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func enable_fishing():
+func enable_fishing(is_in_boat: bool):
 	pass

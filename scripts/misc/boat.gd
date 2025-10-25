@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-@export var pos_y: float = -34.0
-
 @onready var water: Water = get_tree().get_first_node_in_group("Water")
 
 const SPEED: float = 150.0
@@ -41,9 +39,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.velocity.x = 0.0
 		player_in_boat = true
 		if body.has_method("enable_fishing"):
-			body.enable_fishing()
+			body.enable_fishing(true)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player_in_boat = false
+		if body.has_method("enable_fishing"):
+			body.enable_fishing(false)
