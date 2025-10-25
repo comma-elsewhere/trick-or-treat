@@ -152,3 +152,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("CanSplash"):
 		splash(body.global_position, body.velocity.y * player_splash_multiplier)
+
+
+func _on_fishing_zone_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
