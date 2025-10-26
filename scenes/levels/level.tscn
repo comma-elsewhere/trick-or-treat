@@ -1,19 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=5 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://l431yi2g0ukb" path="res://scenes/prefabs/player.tscn" id="2_6iamk"]
 [ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
-[ext_resource type="Script" uid="uid://cxrhphrxluw50" path="res://scripts/classes/fishing_manager.gd" id="5_d4w6o"]
-[ext_resource type="PackedScene" uid="uid://tr141j3qjva" path="res://scenes/gui/fishing_minigame.tscn" id="6_7pb6i"]
-[ext_resource type="Script" uid="uid://c0c8i8msdv0c5" path="res://scripts/classes/fishing_zone.gd" id="6_mbbpy"]
-[ext_resource type="Script" uid="uid://b8snc6akyrx32" path="res://scripts/classes/fish_type.gd" id="7_xfk5q"]
-[ext_resource type="Resource" uid="uid://bxlx5j5i2ljcm" path="res://resources/item_pool/carp.tres" id="8_qogh7"]
-[ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="9_8iyoh"]
-[ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="10_mq31s"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouxo3"]
-size = Vector2(1915, 82)
 
 [node name="Level" type="Node2D"]
 
@@ -21,20 +11,26 @@ size = Vector2(1915, 82)
 z_index = 1
 position = Vector2(0, -60)
 script = ExtResource("1_ksju7")
-water_size = Vector2(2500, 250)
+water_size = Vector2(2500, 550)
 segment_count = 512
 player_splash_multiplier = 0.15
 wave_energy_loss = 0.02
+metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
-z_index = 1
+z_index = 2
+z_as_relative = false
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-305, -98, -113, -87, 71, -63, 204, 6, 289, 29, 508, 137, 1009, 175, 2514, 164, 2511, 398, -1129, 410, -1129, -111)
+polygon = PackedVector2Array(-1126, -100, -315, -93, 26, -64, 223, 48, 511, 455, 2507, 468, 2509, 573, -1116, 549)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
-polygon = PackedVector2Array(-1138, -109, -305, -99, -109, -87, 69, -61, 503, 149, 2511, 162, 2511, 389, -1128, 407)
+z_index = 1
+position = Vector2(6, 6)
+polygon = PackedVector2Array(-1138, -109, -305, -99, 19, -70, 219, 46, 512, 451, 2495, 466, 2495, 562, -1107, 550)
 
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
 z_index = -1
@@ -43,10 +39,10 @@ position = Vector2(-60, -123)
 [node name="Camera" type="Camera2D" parent="Player"]
 z_index = 1
 position = Vector2(32, 36)
-offset = Vector2(0, -50)
+offset = Vector2(0, 100)
 limit_left = -1100
 limit_right = 2455
-limit_bottom = 140
+limit_bottom = 400
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
 
@@ -54,20 +50,4 @@ limit_bottom = 140
 
 [node name="Boat" parent="." instance=ExtResource("4_xb4v1")]
 z_index = 0
-position = Vector2(257, -30)
-
-[node name="fishing_manager" type="Node" parent="."]
-script = ExtResource("5_d4w6o")
-fishing_minigame_scene = ExtResource("6_7pb6i")
-available_fish = Array[ExtResource("7_xfk5q")]([ExtResource("8_qogh7"), ExtResource("9_8iyoh")])
-default_rod = ExtResource("10_mq31s")
-
-[node name="fishing_zone" type="Area2D" parent="."]
-script = ExtResource("6_mbbpy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing_zone"]
-position = Vector2(1263.5, -97)
-shape = SubResource("RectangleShape2D_ouxo3")
-
-[connection signal="body_entered" from="fishing_zone" to="fishing_zone" method="_on_body_entered"]
-[connection signal="body_exited" from="fishing_zone" to="fishing_zone" method="_on_body_exited"]
+position = Vector2(175, -34)

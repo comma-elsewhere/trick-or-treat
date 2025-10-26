@@ -23,6 +23,9 @@ var recently_splashed: bool = false
 var surface_line: Line2D
 var fill_polygon: Polygon2D
 
+var timer
+var make_timer: bool = true
+
 @export_tool_button("Update Water", "Callable") var update_water_button: Callable = _button_update
 
 func _ready() -> void:
@@ -72,6 +75,15 @@ func _initiate_water() -> void:
 	new_collision_shape.shape = new_shape
 	new_collision_shape.position = water_size/2.0 + Vector2(0, surface_pos_y/2.0)
 	new_area.add_child(new_collision_shape)
+	
+	
+	timer = Timer.new()
+	timer.wait_time = 30.0
+	timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+	timer.autostart = true
+	add_child(timer)
+	timer.timeout.connect(start_spooky_wave)
+	timer.start()
 	
 func update_physics(delta: float) -> void:
 	for i in range(segment_count):
@@ -145,6 +157,18 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void:
 	recently_splashed = true
 	set_process(true)
 	
+func start_spooky_wave():
+	var segment_width: float = water_size.x / (segment_count - 1)
+	var start_x: float = randf_range(20.0, water_size.x - 30.0)
+	var end_x: float = start_x + 25.0
+	var range_x = int((end_x - start_x) / segment_width)
+	var omega = (end_x - start_x) / PI
+	for x in range(range_x):
+		var current_x = start_x + x
+		var splash_velocity: float = cos(omega * (current_x - start_x)) * 75
+		var x_pos: Vector2 = Vector2(current_x, 0.0)
+		splash(x_pos, splash_velocity)
+	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("CanSplash"):
 		splash(body.global_position, -body.velocity.y * player_splash_multiplier)
@@ -154,5 +178,5 @@ func _on_body_exited(body: Node2D) -> void:
 		splash(body.global_position, body.velocity.y * player_splash_multiplier)
 
 
-func _on_fishing_zone_body_entered(body: Node2D) -> void:
+func _on_fishing_zone_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
