@@ -40,6 +40,11 @@ Player=""
 Boat=""
 Water=""
 
+[gui]
+
+theme/custom="uid://blg82ci3006mw"
+theme/custom_font="uid://hp3hr2gulx35"
+
 [input]
 
 jump={

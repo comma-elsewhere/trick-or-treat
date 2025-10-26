@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://blg82ci3006mw"]
+
+[ext_resource type="Texture2D" uid="uid://b2jortqrvhms4" path="res://assets/visual/gui/import/window_10.png" id="1_ols5k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_biaja"]
+texture = ExtResource("1_ols5k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ols5k"]
+texture = ExtResource("1_ols5k")
+
+[resource]
+Button/font_sizes/font_size = 32
+Label/font_sizes/font_size = 32
+menu_button/base_type = &"Button"
+menu_button/colors/font_color = Color(0.16565639, 0.16565642, 0.16565639, 1)
+menu_button/colors/font_disabled_color = Color(0.45840496, 0.45840508, 0.4584049, 1)
+menu_button/colors/font_focus_color = Color(0, 0, 0, 1)
+menu_button/colors/font_hover_color = Color(0, 0, 0, 1)
+menu_button/styles/disabled = SubResource("StyleBoxTexture_biaja")
+menu_button/styles/focus = SubResource("StyleBoxTexture_biaja")
+menu_button/styles/hover = SubResource("StyleBoxTexture_biaja")
+menu_button/styles/normal = SubResource("StyleBoxTexture_biaja")
+menu_button/styles/pressed = SubResource("StyleBoxTexture_biaja")
+scroll_panel/base_type = &"PanelContainer"
+scroll_panel/styles/panel = SubResource("StyleBoxTexture_ols5k")
