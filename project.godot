@@ -22,7 +22,6 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 [autoload]
 
 Global="*res://scripts/global/global.gd"
-GSig="*res://scripts/global/global_signals.gd"
 GConst="*res://scripts/global/global_const.gd"
 
 [display]

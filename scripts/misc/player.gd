@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
@@ -15,6 +16,7 @@ var is_fishing: bool = false
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	animation_player.play("fade-in")
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_fish and not is_fishing:
@@ -51,3 +53,10 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+func death():
+	animation_player.play("fadeout")
+	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fadeout":
+		get_tree().call_deferred("reload_current_scene")

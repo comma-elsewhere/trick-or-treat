@@ -2,6 +2,8 @@
 extends Node2D
 class_name Water
 
+signal splash_sound
+
 @export var water_size: Vector2 = Vector2(8.0, 16.0)
 @export var surface_pos_y: float = 0.5
 @export_range(2,512) var segment_count: int = 64
@@ -155,6 +157,7 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void:
 	var index: int = int(clamp(local_x_pos / segment_width, 0, segment_count - 1))
 	segment_data[index]["velocity"] = splash_velocity
 	recently_splashed = true
+	splash_sound.emit()
 	set_process(true)
 	
 func start_spooky_wave():
