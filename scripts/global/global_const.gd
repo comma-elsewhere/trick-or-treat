@@ -2,23 +2,10 @@ extends Node
 
 var items: Dictionary = {
 	"Trout" = {
-		"icon": "file_path",
+		"name": "River Trout",
+		"icon": "res://assets/visual/icons/fishing/shadow/5.png",
+		"stack_amount": 9,
 		"value": 1,
 		"description": "This was once alive."
 	},
-	"Bass" = {
-		"icon": "file_path",
-		"value": 1,
-		"description": "This was once alive."
-	},
-	"Carp" = {
-		"icon": "file_path",
-		"value": 1,
-		"description": "This was once alive."
-	},
-	"Better Rod" = {
-		"icon": "file_path",
-		"value": 10,
-		"description": "Go deeper."
-	}
 }
