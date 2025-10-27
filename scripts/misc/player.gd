@@ -19,6 +19,7 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("interact") and can_fish and not is_fishing:
 		start_fishing()
+		print("fishing")
 
 func start_fishing():
 	is_fishing = true
