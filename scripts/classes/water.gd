@@ -2,7 +2,7 @@
 extends Node2D
 class_name Water
 
-signal splash_sound
+
 
 @export var water_size: Vector2 = Vector2(8.0, 16.0)
 @export var surface_pos_y: float = 0.5
@@ -157,8 +157,23 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void:
 	var index: int = int(clamp(local_x_pos / segment_width, 0, segment_count - 1))
 	segment_data[index]["velocity"] = splash_velocity
 	recently_splashed = true
-	splash_sound.emit()
+	play_splash_sound_varied()
 	set_process(true)
+
+func play_splash_sound_varied():
+	var splash_player = AudioStreamPlayer.new()
+	add_child(splash_player)
+	
+	splash_player.pitch_scale = randf_range(0.6, 1.4)
+	splash_player.volume_db = randf_range(-3.0, 3.0)
+	
+	
+	if has_node("../Audio manager/WaterSplash"):
+		var original_sound = get_node("../Audio manager/WaterSplash")
+		splash_player.stream = original_sound.stream
+	splash_player.finished.connect(splash_player.queue_free)
+	splash_player.play(0.6)
+
 	
 func start_spooky_wave():
 	var segment_width: float = water_size.x / (segment_count - 1)
@@ -179,7 +194,3 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("CanSplash"):
 		splash(body.global_position, body.velocity.y * player_splash_multiplier)
-
-
-func _on_fishing_zone_body_entered(_body: Node2D) -> void:
-	pass # Replace with function body.

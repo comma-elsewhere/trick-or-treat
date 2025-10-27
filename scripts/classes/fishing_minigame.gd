@@ -10,7 +10,6 @@ signal fishing_finished(success: bool, fish: FishType, value: int)
 @onready var bar_track: Control          = %bar_track
 @onready var catch_bar: ColorRect        = %catchBar
 @onready var fish_icon: TextureRect      = %fishIcon
-@onready var treasure_icon: TextureRect  = %treasureIcon
 @onready var progress: ProgressBar       = %progress
 @onready var label_name: Label           = %LabelFishName
 @onready var sfx_hook: AudioStreamPlayer  = %SFX
@@ -43,10 +42,6 @@ var _treasure_val: float = 0.0
 var _fish_seed: float
  
 func _ready():
-	if not fish or not rod:
-		push_warning("FishingMinigame requires fish & rod resources.")
-		return
- 
 	_set_defaults()
  
 func _unhandled_input(event):
@@ -124,7 +119,7 @@ func _physics_process(delta: float):
  
 			if _progress_val >= 100.0:
 				_success()
-			elif _progress_val <= 0.0 and _duration > DURATION:
+			elif _progress_val <= 0.0:
 				_fail("Escaped")
  
 		STATE.END:
@@ -161,8 +156,7 @@ func _success():
  
 func _on_hook():
 	_state = STATE.PLAY
-	treasure_icon.visible = _treasure_active
-	_progress_val = 20.0 # head start
+	_progress_val = 40.0
  
 	_time_freeze(0.06 * rod.hit_freeze_mult)
 	_shake(6.0, 0.18)
@@ -197,7 +191,6 @@ func _set_defaults():
 	_set_fish_visual()
  
 	progress.value = 0
-	treasure_icon.visible = false
 	_treasure_active = randf() < fish.treasure_chance * rod.treasure_mult
 	_treasure_val = 0.0
  
@@ -224,15 +217,6 @@ func _handle_collisions(delta: float):
 	if _progress_val > 0:
 		_duration = 0
  
-	if _treasure_active and treasure_icon.visible:
-		if _is_bar_over_treasure():
-			_treasure_val += TREASURE_FILL_RATE * rod.treasure_mult * delta
-			if _treasure_val >= TREASURE_NEED:
-				_treasure_active = false
-				treasure_icon.hide()
-		else:
-			_treasure_val = max(0.0, _treasure_val - 35.0 * delta)
- 
 func _update_progress_ui():
 	progress.value = clamp(_progress_val, 0.0, 100.0)
  
@@ -242,14 +226,7 @@ func _is_bar_over_fish() -> bool:
  
 	var bar_rect := Rect2(catch_bar.global_position, catch_bar.size)
 	return bar_rect.intersects(fish_rect)
- 
-func _is_bar_over_treasure() -> bool:
-	if not treasure_icon.visible:
-		return false
- 
-	var bar_rect := Rect2(catch_bar.global_position, catch_bar.size)
-	return bar_rect.has_point(treasure_icon.global_position)
- 
+
  
 func _punch_ui(node: Node, scale_to: float, time: float):
 	var t := create_tween()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kp5yqbiub7oq" path="res://scripts/classes/fishing_minigame.gd" id="1_atuv8"]
 [ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="2_y0pwh"]
 [ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="3_03kqu"]
-[ext_resource type="Texture2D" uid="uid://c6v1t2b2mk4b5" path="res://assets/items/fish arapaima.png" id="4_y0pwh"]
+[ext_resource type="Texture2D" uid="uid://c6v1t2b2mk4b5" path="res://assets/visual/items/fish arapaima.png" id="4_y0pwh"]
 [ext_resource type="Shader" uid="uid://dyirvx7eh4734" path="res://shaders/bg_shader.gdshader" id="5_03kqu"]
 [ext_resource type="Texture2D" uid="uid://bcol5wf7divdl" path="res://assets/backgrounds/Portal.png" id="5_nnu1u"]
 [ext_resource type="Texture2D" uid="uid://devnw4y3d333l" path="res://assets/backgrounds/monocromaticopj.png" id="6_ror43"]
@@ -187,20 +187,6 @@ offset_right = 612.8897
 offset_bottom = 335.8897
 rotation = -1.5707964
 show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="treasureIcon" type="TextureRect" parent="Control/catchArea"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = -1.6363636
-anchor_right = 0.55
-anchor_bottom = -1.547
-offset_left = -39.0
-offset_top = 27.0
-offset_right = 44.55
-offset_bottom = 42.136
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelFishName" type="Label" parent="Control/catchArea"]
