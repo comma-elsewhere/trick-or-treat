@@ -1,0 +1,296 @@
+[gd_scene load_steps=8 format=3 uid="uid://b42gamjua8r0l"]
+
+[ext_resource type="Script" uid="uid://sn7tuo7tk0nq" path="res://scripts/gui/shop_bar.gd" id="1_f1n2c"]
+[ext_resource type="Script" uid="uid://bc8g2t3j62rba" path="res://scripts/gui/shopkeep_dialogue.gd" id="1_jwwn2"]
+[ext_resource type="Script" uid="uid://dg7xsk57myi4l" path="res://scripts/gui/stock_container.gd" id="2_xf5gg"]
+[ext_resource type="Script" uid="uid://nmnclv38xcu7" path="res://scripts/gui/shopkeep_questions.gd" id="3_l0wp4"]
+[ext_resource type="Script" uid="uid://dknn0gefu41kq" path="res://scripts/gui/sell_container.gd" id="3_rykso"]
+
+[sub_resource type="Gradient" id="Gradient_ssevm"]
+offsets = PackedFloat32Array(0, 0.9533333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.36666667, 0.36666667, 0.36666667, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jwwn2"]
+gradient = SubResource("Gradient_ssevm")
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_jwwn2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ShopBar" type="PanelContainer" parent="." node_paths=PackedStringArray("upgrades", "other_stuff", "sell_fish", "talk", "question", "upgrades_button", "buy_stuff_button", "sell_button", "talk_button", "question_button")]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_f1n2c")
+upgrades = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/UpgradesContainer")
+other_stuff = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/StuffContainer")
+sell_fish = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/SellContainer")
+talk = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/Talk")
+question = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/Question")
+upgrades_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer/UpgradesButton")
+buy_stuff_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer/BuyButton")
+sell_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer/SellButton")
+talk_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer/TalkButton")
+question_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer/QuestionButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopBar"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="HSort" type="HBoxContainer" parent="ShopBar/MarginContainer"]
+layout_mode = 2
+
+[node name="ShopConcents" type="ScrollContainer" parent="ShopBar/MarginContainer/HSort"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="UpgradesContainer" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_xf5gg")
+stock_type = "Upgrades"
+
+[node name="Label" type="Label" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/UpgradesContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Gear"
+
+[node name="GridContainer" type="GridContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/UpgradesContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="StuffContainer" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_xf5gg")
+stock_type = "Mystery"
+
+[node name="Label" type="Label" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/StuffContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Mystery Items"
+
+[node name="GridContainer" type="GridContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/StuffContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="SellContainer" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_rykso")
+
+[node name="Label" type="Label" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/SellContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Your Inventory"
+
+[node name="GridContainer" type="GridContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/SellContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="Talk" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer" node_paths=PackedStringArray("option_one", "option_two", "option_three", "option_four", "shopkeep_dialogue", "other_stuff", "ask_questions")]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_jwwn2")
+option_one = NodePath("DialogueButtons/option_one")
+option_two = NodePath("DialogueButtons/option_two")
+option_three = NodePath("DialogueButtons/option_three")
+option_four = NodePath("DialogueButtons/option_four")
+shopkeep_dialogue = NodePath("Shopkeep/ShopkeepDialogue")
+other_stuff = NodePath("../../../ShopNav/MarginContainer/VBoxContainer/BuyButton")
+ask_questions = NodePath("../../../ShopNav/MarginContainer/VBoxContainer/QuestionButton")
+
+[node name="DialogueButtons" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="option_one" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_two" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_three" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_four" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="Shopkeep" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopkeepDialogue" type="Label" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/Shopkeep"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 22
+text = "This is an example of things that could be said after you say things!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/Shopkeep"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+
+[node name="Question" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer" node_paths=PackedStringArray("option_one", "option_two", "option_three", "option_four", "shopkeep_dialogue")]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("3_l0wp4")
+option_one = NodePath("DialogueButtons/option_five")
+option_two = NodePath("DialogueButtons/option_six")
+option_three = NodePath("DialogueButtons/option_seven")
+option_four = NodePath("DialogueButtons/option_eight")
+shopkeep_dialogue = NodePath("Shopkeep/ShopkeepDialogue")
+
+[node name="DialogueButtons" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="option_five" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_six" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_seven" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="option_eight" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "This is a dialogue option."
+
+[node name="Shopkeep" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopkeepDialogue" type="Label" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/Shopkeep"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 22
+text = "This is an example of things that could be said after you say things!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/Shopkeep"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+
+[node name="ShopNav" type="ScrollContainer" parent="ShopBar/MarginContainer/HSort"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopBar/MarginContainer/HSort/ShopNav"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Greetings" type="Label" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "What can I do ya for?"
+
+[node name="UpgradesButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Gear Upgrades"
+
+[node name="BuyButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Purchase \"Other Stuff\""
+
+[node name="SellButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sell Fish"
+
+[node name="TalkButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Talk
+"
+
+[node name="QuestionButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Question
+"
+
+[connection signal="pressed" from="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/Shopkeep/ContinueButton" to="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/Shopkeep/ContinueButton" to="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question" method="_on_continue_button_pressed"]

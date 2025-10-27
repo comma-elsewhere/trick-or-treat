@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6gifaf7fin5l"]
+
+[ext_resource type="Script" uid="uid://gsaubbo6rhc1" path="res://scripts/gui/sell_item.gd" id="1_xvvol"]
+[ext_resource type="Texture2D" uid="uid://b1buktscgwvdw" path="res://assets/visual/gui/import/window_13.png" id="2_xvvol"]
+[ext_resource type="Texture2D" uid="uid://dktijuh5cbl72" path="res://assets/visual/gui/import/window_8.png" id="3_xvvol"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbnp8"]
+texture = ExtResource("2_xvvol")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekmgh"]
+texture = ExtResource("3_xvvol")
+texture_margin_left = 12.0
+texture_margin_top = 10.0
+texture_margin_right = 12.0
+texture_margin_bottom = 10.0
+
+[node name="SellItem" type="VBoxContainer"]
+theme_override_constants/separation = 2
+script = ExtResource("1_xvvol")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kbnp8")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekmgh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ekmgh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ekmgh")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ekmgh")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ekmgh")
+text = "SELL"
+autowrap_trim_flags = 0
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

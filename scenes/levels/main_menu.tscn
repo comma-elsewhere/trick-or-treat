@@ -1,0 +1,537 @@
+[gd_scene load_steps=11 format=3 uid="uid://cppk3mbfwi7ge"]
+
+[ext_resource type="Script" uid="uid://c8j0okerfjkfj" path="res://scripts/gui/main_menu.gd" id="1_geflf"]
+[ext_resource type="Script" uid="uid://dpobkvi2m2uja" path="res://scripts/gui/video.gd" id="1_leamy"]
+[ext_resource type="Script" uid="uid://bwtlmqo8fphv5" path="res://scripts/gui/audio.gd" id="2_721jg"]
+[ext_resource type="Texture2D" uid="uid://c3bf2nyfswbvv" path="res://assets/visual/gui/import/bc.png" id="2_crctu"]
+[ext_resource type="Texture2D" uid="uid://bd4uqgmuh547n" path="res://assets/visual/gui/import/window_1.png" id="2_fkd6t"]
+[ext_resource type="Script" uid="uid://bnxn0wmrc0rge" path="res://scripts/gui/controls.gd" id="3_721jg"]
+[ext_resource type="Texture2D" uid="uid://bfxas6r8q1svm" path="res://assets/visual/gui/import/window_12.png" id="4_keln3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crctu"]
+texture = ExtResource("4_keln3")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_keln3"]
+texture = ExtResource("4_keln3")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sn5u3"]
+texture = ExtResource("4_keln3")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+
+[node name="MenuControl" type="Control" node_paths=PackedStringArray("main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_geflf")
+main_menu = NodePath("MainMenu")
+main_settings = NodePath("Settings")
+video_settings = NodePath("Video")
+audio_settings = NodePath("Audio")
+control_map = NodePath("Controls")
+settings_button = NodePath("MainMenu/Control3/Settings")
+video_button = NodePath("Settings/Control/Video")
+audio_button = NodePath("Settings/Control2/Audio")
+controls_button = NodePath("Settings/Control3/Controls")
+return_button = NodePath("Settings/Control4/Return")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_crctu")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fkd6t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="MainMenu/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+theme_override_font_sizes/font_size = 32
+text = "New Game"
+
+[node name="Control2" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="MainMenu/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+disabled = true
+text = "Continue"
+
+[node name="Control3" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MainMenu/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Settings"
+
+[node name="Control4" type="Control" parent="MainMenu"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="MainMenu/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Quit"
+
+[node name="Settings" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Video" type="Button" parent="Settings/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Video"
+
+[node name="Control2" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Audio" type="Button" parent="Settings/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Audio"
+
+[node name="Control3" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="Settings/Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Controls"
+
+[node name="Control4" type="Control" parent="Settings"]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+
+[node name="Return" type="Button" parent="Settings/Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 25)
+theme_type_variation = &"menu_button"
+text = "Return to Menu"
+
+[node name="Video" type="VBoxContainer" parent="." node_paths=PackedStringArray("resolution", "fullscreen", "borderless")]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("1_leamy")
+resolution = NodePath("HBoxContainer/Resolution")
+fullscreen = NodePath("HBoxContainer2/Fullscreen")
+borderless = NodePath("HBoxContainer3/Borderless")
+
+[node name="Label" type="Label" parent="Video"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Video"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Video"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
+text = "Resolution"
+
+[node name="Resolution" type="OptionButton" parent="Video/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Video"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Video/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Fullscreen"
+
+[node name="Fullscreen" type="CheckBox" parent="Video/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Video"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Video/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Borderless"
+
+[node name="Borderless" type="CheckBox" parent="Video/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="BackButton" type="Button" parent="Video"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_crctu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_crctu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_crctu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_crctu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_crctu")
+text = "Back"
+
+[node name="Audio" type="VBoxContainer" parent="." node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+script = ExtResource("2_721jg")
+master_slider = NodePath("HBoxContainer/Master")
+music_slider = NodePath("HBoxContainer2/Music")
+sfx_slider = NodePath("HBoxContainer3/SFX")
+
+[node name="Label" type="Label" parent="Audio"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Audio"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Master"
+
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Audio"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Audio/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Audio/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="BackButton" type="Button" parent="Audio"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_keln3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_keln3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_keln3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_keln3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_keln3")
+text = "Back"
+
+[node name="Controls" type="VBoxContainer" parent="." node_paths=PackedStringArray("jump_button", "left_button", "right_button", "interact_button", "fish_button", "inventory_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+script = ExtResource("3_721jg")
+jump_button = NodePath("HBoxContainer3/Jump")
+left_button = NodePath("HBoxContainer/Left")
+right_button = NodePath("HBoxContainer2/Right")
+interact_button = NodePath("HBoxContainer6/Interact")
+fish_button = NodePath("HBoxContainer7/Fishing")
+inventory_button = NodePath("HBoxContainer5/Inventory")
+
+[node name="Label" type="Label" parent="Controls"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Jump"
+
+[node name="Jump" type="Button" parent="Controls/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Left"
+
+[node name="Left" type="Button" parent="Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Right"
+
+[node name="Right" type="Button" parent="Controls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Interact"
+
+[node name="Interact" type="Button" parent="Controls/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "E"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Fishing Rod"
+
+[node name="Fishing" type="Button" parent="Controls/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+text = "Inventory"
+
+[node name="Inventory" type="Button" parent="Controls/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shift"
+
+[node name="BackButton" type="Button" parent="Controls"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_sn5u3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sn5u3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sn5u3")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_sn5u3")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sn5u3")
+text = "Back"
+
+[connection signal="button_up" from="MainMenu/Control/NewGame" to="." method="_on_new_game_button_up"]
+[connection signal="button_up" from="MainMenu/Control4/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Video/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Audio/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Controls/BackButton" to="." method="_on_back_button_button_up"]
