@@ -1,5 +1,7 @@
 extends Control
 
+@export var animation: AnimationPlayer
+
 @export var main_menu: VBoxContainer
 @export var main_settings: VBoxContainer
 @export var video_settings: VBoxContainer
@@ -15,6 +17,7 @@ extends Control
 var current_panel 
 
 func _ready() -> void:
+	animation.play("game_open")
 	current_panel = main_menu
 	_show_panel(main_menu)
 	
@@ -42,3 +45,6 @@ func _on_quit_button_up() -> void:
 
 func _on_new_game_button_up() -> void:
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
+
+func _on_start_game_button_button_up() -> void:
+	animation.play("menu_open")

@@ -2,8 +2,6 @@
 extends Node2D
 class_name Water
 
-
-
 @export var water_size: Vector2 = Vector2(8.0, 16.0)
 @export var surface_pos_y: float = 0.5
 @export_range(2,512) var segment_count: int = 64
@@ -80,7 +78,7 @@ func _initiate_water() -> void:
 	
 	
 	timer = Timer.new()
-	timer.wait_time = 30.0
+	timer.wait_time = randf_range(15.0, 60.0)
 	timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	timer.autostart = true
 	add_child(timer)

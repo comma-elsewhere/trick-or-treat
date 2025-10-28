@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cppk3mbfwi7ge"]
+[gd_scene load_steps=17 format=3 uid="uid://cppk3mbfwi7ge"]
 
 [ext_resource type="Script" uid="uid://c8j0okerfjkfj" path="res://scripts/gui/main_menu.gd" id="1_geflf"]
 [ext_resource type="Script" uid="uid://dpobkvi2m2uja" path="res://scripts/gui/video.gd" id="1_leamy"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bd4uqgmuh547n" path="res://assets/visual/gui/import/window_1.png" id="2_fkd6t"]
 [ext_resource type="Script" uid="uid://bnxn0wmrc0rge" path="res://scripts/gui/controls.gd" id="3_721jg"]
 [ext_resource type="Texture2D" uid="uid://bfxas6r8q1svm" path="res://assets/visual/gui/import/window_12.png" id="4_keln3"]
+[ext_resource type="Texture2D" uid="uid://by1rjn0keln04" path="res://assets/backgrounds/titlescreen.png" id="8_cn35j"]
+[ext_resource type="Texture2D" uid="uid://bgoo5p6xien52" path="res://assets/visual/gui/import/play.png" id="9_wko7x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crctu"]
 texture = ExtResource("4_keln3")
@@ -29,7 +31,72 @@ texture_margin_top = 6.0
 texture_margin_right = 4.0
 texture_margin_bottom = 6.0
 
-[node name="MenuControl" type="Control" node_paths=PackedStringArray("main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button")]
+[sub_resource type="Animation" id="Animation_pwqr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartGameButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(751, 730)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ohdsy"]
+resource_name = "menu_open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -800)]
+}
+
+[sub_resource type="Animation" id="Animation_fwnpy"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartGameButton:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(751, 730), Vector2(747, 490)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0nyb"]
+_data = {
+&"RESET": SubResource("Animation_pwqr4"),
+&"game_open": SubResource("Animation_fwnpy"),
+&"menu_open": SubResource("Animation_ohdsy")
+}
+
+[node name="MenuControl" type="Control" node_paths=PackedStringArray("animation", "main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_geflf")
+animation = NodePath("AnimationPlayer")
 main_menu = NodePath("MainMenu")
 main_settings = NodePath("Settings")
 video_settings = NodePath("Video")
@@ -530,8 +598,51 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_sn5u3")
 theme_override_styles/focus = SubResource("StyleBoxTexture_sn5u3")
 text = "Back"
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_cn35j")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="StartGameButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 111.0
+offset_top = 10.0
+offset_right = 277.0
+offset_bottom = 184.00006
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("9_wko7x")
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Control")
+libraries = {
+&"": SubResource("AnimationLibrary_k0nyb")
+}
+
 [connection signal="button_up" from="MainMenu/Control/NewGame" to="." method="_on_new_game_button_up"]
 [connection signal="button_up" from="MainMenu/Control4/Quit" to="." method="_on_quit_button_up"]
 [connection signal="button_up" from="Video/BackButton" to="." method="_on_back_button_button_up"]
 [connection signal="button_up" from="Audio/BackButton" to="." method="_on_back_button_button_up"]
 [connection signal="button_up" from="Controls/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="Control/StartGameButton" to="." method="_on_start_game_button_button_up"]
