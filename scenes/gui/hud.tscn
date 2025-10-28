@@ -1,16 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmv1ervctafi5"]
+[gd_scene load_steps=12 format=3 uid="uid://dmv1ervctafi5"]
 
 [ext_resource type="Script" uid="uid://dxlpd8w814che" path="res://scripts/gui/pause_menu.gd" id="1_86rft"]
 [ext_resource type="Texture2D" uid="uid://b5cvlnckop2jw" path="res://assets/visual/gui/import/window_7.png" id="2_qxonp"]
 [ext_resource type="Script" uid="uid://hdywt4ho514r" path="res://scripts/gui/inventory.gd" id="3_2pnwd"]
 [ext_resource type="Script" uid="uid://bqt2lvrt7qdhv" path="res://scripts/gui/inventory_grid.gd" id="3_aoesn"]
 [ext_resource type="Texture2D" uid="uid://cle0x1i5cr7u0" path="res://assets/visual/icons/bones/bg.png" id="3_ueg55"]
+[ext_resource type="Texture2D" uid="uid://dw8d1ovvwy1qc" path="res://assets/visual/gui/import/chain.png" id="6_gbuxp"]
+[ext_resource type="Texture2D" uid="uid://cxwdivbiq0q6e" path="res://assets/visual/gui/import/window.png" id="7_2b3sj"]
+[ext_resource type="Script" uid="uid://cxk1xsbbihsu2" path="res://scripts/gui/equipment_box.gd" id="8_2b3sj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoesn"]
 texture = ExtResource("2_qxonp")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2pnwd"]
 texture = ExtResource("3_ueg55")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rmity"]
+texture = ExtResource("7_2b3sj")
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -61,156 +67,206 @@ text = "Exit Game"
 layout_mode = 2
 text = "Continue"
 
-[node name="Inventory" type="PanelContainer" parent="."]
+[node name="YourStuff" type="VBoxContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 609.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_aoesn")
+theme_override_constants/separation = -20
 script = ExtResource("3_2pnwd")
 
-[node name="MarginContainer" type="MarginContainer" parent="Inventory"]
+[node name="Inventory" type="PanelContainer" parent="YourStuff"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_aoesn")
+
+[node name="MarginContainer" type="MarginContainer" parent="YourStuff/Inventory"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 20
 
-[node name="InventoryGrid" type="GridContainer" parent="Inventory/MarginContainer"]
+[node name="InventoryGrid" type="GridContainer" parent="YourStuff/Inventory/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 8
 columns = 6
 script = ExtResource("3_aoesn")
 
-[node name="Slot1" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot1" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot2" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot2" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot3" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot3" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot4" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot4" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot5" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot5" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot6" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot6" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot7" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot7" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot8" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot8" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot9" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot9" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot10" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot10" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot11" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot11" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot12" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot12" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot13" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot13" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot14" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot14" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot15" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot15" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot16" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot16" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot17" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot17" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot18" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot18" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot19" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot19" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot20" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot20" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot21" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot21" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot22" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot22" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot23" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot23" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
 
-[node name="Slot24" type="PanelContainer" parent="Inventory/MarginContainer/InventoryGrid"]
+[node name="Slot24" type="PanelContainer" parent="YourStuff/Inventory/MarginContainer/InventoryGrid"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2pnwd")
+
+[node name="SpacerVBox" type="VBoxContainer" parent="YourStuff"]
+z_index = -1
+layout_mode = 2
+theme_override_constants/separation = -65
+
+[node name="ChainsRect" type="TextureRect" parent="YourStuff/SpacerVBox"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_gbuxp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Equipment" type="PanelContainer" parent="YourStuff/SpacerVBox"]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rmity")
+
+[node name="MarginContainer" type="MarginContainer" parent="YourStuff/SpacerVBox/Equipment"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="EquipmentBox" type="HBoxContainer" parent="YourStuff/SpacerVBox/Equipment/MarginContainer"]
+layout_mode = 2
+script = ExtResource("8_2b3sj")
+
+[node name="Rod" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="Hook" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="Charm" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+expand_mode = 1
 
 [connection signal="button_up" from="PauseMenu/MarginContainer/VBoxContainer/ExitGame" to="PauseMenu" method="_on_exit_game_button_up"]
 [connection signal="button_up" from="PauseMenu/MarginContainer/VBoxContainer/Continue" to="PauseMenu" method="_on_continue_button_up"]

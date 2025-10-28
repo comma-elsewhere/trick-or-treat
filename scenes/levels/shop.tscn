@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b42gamjua8r0l"]
+[gd_scene load_steps=10 format=3 uid="uid://b42gamjua8r0l"]
 
+[ext_resource type="Texture2D" uid="uid://b5cvlnckop2jw" path="res://assets/visual/gui/import/window_7.png" id="1_27pq4"]
 [ext_resource type="Script" uid="uid://sn7tuo7tk0nq" path="res://scripts/gui/shop_bar.gd" id="1_f1n2c"]
 [ext_resource type="Script" uid="uid://bc8g2t3j62rba" path="res://scripts/gui/shopkeep_dialogue.gd" id="1_jwwn2"]
 [ext_resource type="Script" uid="uid://dg7xsk57myi4l" path="res://scripts/gui/stock_container.gd" id="2_xf5gg"]
@@ -12,6 +13,13 @@ colors = PackedColorArray(0, 0, 0, 1, 0.36666667, 0.36666667, 0.36666667, 1, 1, 
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jwwn2"]
 gradient = SubResource("Gradient_ssevm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wducc"]
+texture = ExtResource("1_27pq4")
+texture_margin_left = 8.0
+texture_margin_top = 6.0
+texture_margin_right = 8.0
+texture_margin_bottom = 20.0
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -41,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wducc")
 script = ExtResource("1_f1n2c")
 upgrades = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/UpgradesContainer")
 other_stuff = NodePath("MarginContainer/HSort/ShopConcents/MarginContainer/StuffContainer")
@@ -55,7 +64,10 @@ question_button = NodePath("MarginContainer/HSort/ShopNav/MarginContainer/VBoxCo
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopBar"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 16
 
 [node name="HSort" type="HBoxContainer" parent="ShopBar/MarginContainer"]
 layout_mode = 2
@@ -146,21 +158,25 @@ theme_override_constants/separation = 10
 
 [node name="option_one" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_two" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_three" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_four" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
@@ -181,6 +197,7 @@ autowrap_mode = 3
 [node name="ContinueButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Talk/Shopkeep"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 20
 text = "Continue"
 
@@ -201,21 +218,25 @@ theme_override_constants/separation = 10
 
 [node name="option_five" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_six" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_seven" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
 [node name="option_eight" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/DialogueButtons"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 22
 text = "This is a dialogue option."
 
@@ -236,6 +257,7 @@ autowrap_mode = 3
 [node name="ContinueButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopConcents/MarginContainer/Question/Shopkeep"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 20
 text = "Continue"
 
@@ -267,27 +289,32 @@ text = "What can I do ya for?"
 
 [node name="UpgradesButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 24
 text = "Gear Upgrades"
 
 [node name="BuyButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 24
 text = "Purchase \"Other Stuff\""
 
 [node name="SellButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 24
 text = "Sell Fish"
 
 [node name="TalkButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 24
 text = "Talk
 "
 
 [node name="QuestionButton" type="Button" parent="ShopBar/MarginContainer/HSort/ShopNav/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"shop"
 theme_override_font_sizes/font_size = 24
 text = "Question
 "
