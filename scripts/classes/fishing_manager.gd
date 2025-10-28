@@ -12,7 +12,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.started_fishing.connect(_on_player_started_fishing)
-
+		
 func _on_player_started_fishing():
 	start_fishing_minigame()
 

@@ -9,7 +9,9 @@ signal started_fishing()
 signal finished_fishing(success: bool, item: Resource)
 
 @export var can_fish: bool = false
+@onready var fishing_indicator = $fishing_indicator
 var is_fishing: bool = false
+var is_waiting_for_bite: bool = false
 
 @onready var boat = get_tree().get_first_node_in_group("Boat")
 
@@ -21,14 +23,63 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("interact") and can_fish and not is_fishing:
 		start_fishing()
-		print("fishing")
+	if event.is_action_pressed("attack") and is_waiting_for_bite:
+		attempt_catch()
 
 func start_fishing():
 	is_fishing = true
-	started_fishing.emit()
+	velocity = Vector2.ZERO
+	
+	if fishing_indicator:
+		fishing_indicator.show_waiting()
+	
+	var bite_time = randf_range(2.0, 5.0)
+	await get_tree().create_timer(bite_time).timeout
+
+	if is_fishing:
+		on_fish_bite()
+	
 	
 	set_physics_process(false)
 
+func on_fish_bite():
+	is_waiting_for_bite = true
+	
+   
+	if fishing_indicator:
+		fishing_indicator.show_exclamation()
+	
+   
+	var catch_window = 0.25
+	await get_tree().create_timer(catch_window).timeout
+	
+	if is_waiting_for_bite:
+		fail_catch()
+
+
+func attempt_catch():
+	print("XD")
+	if not is_waiting_for_bite:
+		return
+	
+	is_waiting_for_bite = false
+	
+	# Ocultar indicador
+	if fishing_indicator:
+		fishing_indicator.hide()
+	
+	# Iniciar minijuego
+	started_fishing.emit()
+	
+func fail_catch():
+	is_waiting_for_bite = false
+	is_fishing = false
+	
+	if fishing_indicator:
+		fishing_indicator.hide()
+	
+	print("You lost it!")
+	
 func end_fishing(success: bool, item: Resource):
 	is_fishing = false
 	finished_fishing.emit(success, item)
