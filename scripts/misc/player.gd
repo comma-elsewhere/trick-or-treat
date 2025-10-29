@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -300.0
 signal started_fishing()
 signal finished_fishing(success: bool, item: Resource)
 
+@export var catch_window: float = 1.0
 @export var can_fish: bool = false
 @onready var fishing_indicator = $fishing_indicator
 var is_fishing: bool = false
@@ -49,8 +50,6 @@ func on_fish_bite():
 	if fishing_indicator:
 		fishing_indicator.show_exclamation()
 	
-   
-	var catch_window = 0.25
 	await get_tree().create_timer(catch_window).timeout
 	
 	if is_waiting_for_bite:

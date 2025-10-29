@@ -155,16 +155,16 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void:
 	var index: int = int(clamp(local_x_pos / segment_width, 0, segment_count - 1))
 	segment_data[index]["velocity"] = splash_velocity
 	recently_splashed = true
-	play_splash_sound_varied()
+	play_splash_sound_varied(splash_pos)
 	set_process(true)
 
-func play_splash_sound_varied():
-	var splash_player = AudioStreamPlayer.new()
+func play_splash_sound_varied(splash_pos: Vector2):
+	var splash_player = AudioStreamPlayer2D.new()
 	add_child(splash_player)
 	
 	splash_player.pitch_scale = randf_range(0.6, 1.4)
 	splash_player.volume_db = randf_range(-3.0, 3.0)
-	
+	splash_player.global_position = splash_pos
 	
 	if has_node("../Audio manager/WaterSplash"):
 		var original_sound = get_node("../Audio manager/WaterSplash")

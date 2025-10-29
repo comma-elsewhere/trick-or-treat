@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=17 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="AudioStream" uid="uid://cnsdejqgqukg8" path="res://assets/audio/sound effects/Water splash.mp3" id="1_xfk5q"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="10_mq31s"]
 [ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="11_5mi6g"]
 [ext_resource type="Script" uid="uid://b5obpb0wck06l" path="res://scripts/misc/drowning_zone.gd" id="14_8iyoh"]
+[ext_resource type="Texture2D" uid="uid://cdalqrde4efq2" path="res://assets/backgrounds/lake_bg.png" id="14_mq31s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4v1"]
 size = Vector2(2127.5, 76)
@@ -37,8 +38,8 @@ water_size = Vector2(2500, 550)
 segment_count = 512
 player_splash_multiplier = 0.15
 wave_energy_loss = 0.02
-surface_color = Color(0.11372549, 0.39215687, 0.50980395, 1)
-water_fill_color = Color(0.17254902, 0.2, 0.45882353, 1)
+surface_color = Color(0.06578119, 0.26788738, 0.35308748, 1)
+water_fill_color = Color(0.07450981, 0.2, 0.23529412, 1)
 metadata/_edit_lock_ = true
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -49,12 +50,12 @@ metadata/_edit_lock_ = true
 z_index = 2
 z_as_relative = false
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-1126, -100, -315, -93, 26, -64, 223, 48, 511, 455, 2507, 468, 2509, 573, -1116, 549)
+polygon = PackedVector2Array(-1139, -48, -317, -73, 26, -64, 223, 48, 511, 455, 2507, 468, 2509, 573, -1116, 549)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
 z_index = 1
 position = Vector2(6, 6)
-polygon = PackedVector2Array(-1138, -109, -305, -99, 19, -70, 219, 46, 512, 451, 2495, 466, 2495, 562, -1107, 550)
+polygon = PackedVector2Array(-1139, -57, -325, -80, 19, -70, 219, 46, 512, 451, 2495, 466, 2495, 562, -1107, 550)
 
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
 z_index = -1
@@ -63,8 +64,9 @@ position = Vector2(-60, -123)
 [node name="Camera" type="Camera2D" parent="Player"]
 z_index = 1
 position = Vector2(32, 36)
-offset = Vector2(0, 100)
-limit_left = -1100
+offset = Vector2(0, 50)
+zoom = Vector2(0.8, 0.8)
+limit_left = -710
 limit_right = 2455
 limit_bottom = 400
 
@@ -96,6 +98,12 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DrowningZone"]
 shape = SubResource("WorldBoundaryShape2D_mq31s")
+
+[node name="LakeBg" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1017, -273)
+texture = ExtResource("14_mq31s")
+flip_h = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
