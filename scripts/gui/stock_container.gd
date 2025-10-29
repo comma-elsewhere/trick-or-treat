@@ -10,11 +10,11 @@ func _ready() -> void:
 	if stock_type == "Upgrades":
 		for item in Global.upgrade_stock:
 			var new_item = shop_item.instantiate()
-			new_item.prepare_item(item.name, item.value, item.icon)
+			new_item.prepare_item(item, false)
 			grid_container.add_child(new_item)
 	else:
 		for item in Global.mystery_stock:
 			var new_item = shop_item.instantiate()
-			new_item.prepare_item(item.name, item.value, item.icon)
+			new_item.prepare_item(item, true)
 			grid_container.add_child(new_item)
 		

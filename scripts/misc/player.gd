@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal started_fishing()
-signal finished_fishing(success: bool, item: Resource)
+#signal finished_fishing(success: bool, item: Resource)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var fishing_indicator: Node2D = $fishing_indicator
@@ -37,6 +37,7 @@ func _input(event):
 		if fishing_state == State.CAN_FISH:
 			_waiting_for_fish()
 		if fishing_state == State.FISH_AVAILABLE:
+			Global.play_audio(self, "FishingRodReel", 0.81)
 			_start_fish_minigame()
 #	if event.is_action_pressed("interact") and can_fish and not is_fishing:
 #		start_fishing()
@@ -48,6 +49,7 @@ func _process(_delta: float) -> void:
 		fishing_state = State.CAN_FISH
 	if !can_fish:
 		fishing_state = State.CANNOT_FISH
+		fishing_indicator.hide()
 
 func _physics_process(_delta: float) -> void:
 	global_position.y = boat.global_position.y -30
@@ -59,20 +61,21 @@ func _waiting_for_fish() -> void:
 	fishing_state = State.WAITING
 	if fishing_indicator:
 		fishing_indicator.show_waiting()
-		
-	var bite_time = randf_range(2.0, 5.0)
-	await get_tree().create_timer(bite_time).timeout
 	
-	fishing_state = State.FISH_AVAILABLE
-	if fishing_indicator:
-		fishing_indicator.show_exclamation()
+	if !Global.lake_stock.is_empty():
+		var bite_time = randf_range(2.0, 5.0)
+		await get_tree().create_timer(bite_time).timeout
 		
-	await get_tree().create_timer(catch_window).timeout
-	
-	if !fishing_state == State.FISHING:
+		fishing_state = State.FISH_AVAILABLE
 		if fishing_indicator:
-			fishing_indicator.hide()
-		_waiting_for_fish()
+			fishing_indicator.show_exclamation()
+			
+		await get_tree().create_timer(catch_window).timeout
+		
+		if !fishing_state == State.FISHING:
+			if fishing_indicator:
+				fishing_indicator.hide()
+			_waiting_for_fish()
 
 func _start_fish_minigame() -> void:
 	fishing_state = State.FISHING

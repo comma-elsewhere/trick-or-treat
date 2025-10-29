@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cle0x1i5cr7u0" path="res://assets/visual/icons/bones/bg.png" id="3_ueg55"]
 [ext_resource type="Texture2D" uid="uid://dw8d1ovvwy1qc" path="res://assets/visual/gui/import/chain.png" id="6_gbuxp"]
 [ext_resource type="Texture2D" uid="uid://cxwdivbiq0q6e" path="res://assets/visual/gui/import/window.png" id="7_2b3sj"]
-[ext_resource type="Script" uid="uid://cxk1xsbbihsu2" path="res://scripts/gui/equipment_box.gd" id="8_2b3sj"]
+[ext_resource type="Script" uid="uid://brkb1uuvioo7u" path="res://scripts/gui/equipment.gd" id="8_2b3sj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoesn"]
 texture = ExtResource("2_qxonp")
@@ -67,7 +67,7 @@ text = "Exit Game"
 layout_mode = 2
 text = "Continue"
 
-[node name="YourStuff" type="VBoxContainer" parent="."]
+[node name="YourStuff" type="VBoxContainer" parent="." node_paths=PackedStringArray("inv_grid")]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -79,6 +79,7 @@ offset_bottom = 609.0
 grow_horizontal = 2
 theme_override_constants/separation = -20
 script = ExtResource("3_2pnwd")
+inv_grid = NodePath("Inventory/MarginContainer/InventoryGrid")
 
 [node name="Inventory" type="PanelContainer" parent="YourStuff"]
 custom_minimum_size = Vector2(600, 400)
@@ -245,7 +246,6 @@ theme_override_constants/margin_right = 50
 
 [node name="EquipmentBox" type="HBoxContainer" parent="YourStuff/SpacerVBox/Equipment/MarginContainer"]
 layout_mode = 2
-script = ExtResource("8_2b3sj")
 
 [node name="Rod" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
 custom_minimum_size = Vector2(90, 90)
@@ -253,6 +253,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 expand_mode = 1
+script = ExtResource("8_2b3sj")
+type = "Rod"
 
 [node name="Hook" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
 custom_minimum_size = Vector2(90, 90)
@@ -260,6 +262,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 expand_mode = 1
+script = ExtResource("8_2b3sj")
+type = "Hook"
 
 [node name="Charm" type="TextureRect" parent="YourStuff/SpacerVBox/Equipment/MarginContainer/EquipmentBox"]
 custom_minimum_size = Vector2(90, 90)
@@ -267,6 +271,8 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 expand_mode = 1
+script = ExtResource("8_2b3sj")
+type = "Charm"
 
 [connection signal="button_up" from="PauseMenu/MarginContainer/VBoxContainer/ExitGame" to="PauseMenu" method="_on_exit_game_button_up"]
 [connection signal="button_up" from="PauseMenu/MarginContainer/VBoxContainer/Continue" to="PauseMenu" method="_on_continue_button_up"]

@@ -3,65 +3,37 @@ extends Node
 var items: Dictionary = {
 	"Whitefish" = {
 		"name": "Lake Whitefish",
-		"icon": "res://assets/visual/icons/fishing/shadow/1.png",
+		"icon": "res://assets/visual/final_icons/Lake Whitefish.png",
 		"value": 2,
-		"description": "They're everywhere.",
-		"type": "fish"
-	},
-	"Lamprey" = {
-		"name": "Sea Lamprey",
-		"icon": "res://assets/visual/icons/loot/shadow/6.png",
-		"value": 1,
-		"description": "Invasive parasites, but not today's problem.",
+		"description": "They're everywhere, it's almost unnerving.",
 		"type": "fish"
 	},
 	"Trout" = {
 		"name": "Lake Trout",
-		"icon": "res://assets/visual/icons/fishing/shadow/5.png",
+		"icon": "res://assets/visual/final_icons/Trout.png",
 		"value": 3,
 		"description": "The most normal thing here.",
 		"type": "fish"
 	},
 	"Sturgeon" = {
 		"name": "Lake Sturgeon",
-		"icon": "res://assets/visual/icons/fishing/shadow/4.png",
+		"icon": "res://assets/visual/final_icons/Sturgeon.png",
 		"value": 5,
 		"description": "Not what I'm looking for.",
 		"type": "fish"
 	},
-	"Salmon" = {
-		"name": "Coho Salmon",
-		"icon": "res://assets/visual/icons/fishing/shadow/6.png",
-		"value": 4,
-		"description": "I hear they're unrecognizable during spawning season.",
-		"type": "fish"
-	},
-	"Pike" = {
-		"name": "Northern Pike",
-		"icon": "res://assets/visual/icons/fishing/shadow/20.png",
-		"value": 4,
-		"description": "Carnivorous...",
-		"type": "fish"
-	},
 	"Walleye" = {
 		"name": "Walleye",
-		"icon": "res://assets/visual/icons/fishing/shadow/17.png",
+		"icon": "res://assets/visual/final_icons/Walleye.png",
 		"value": 3,
-		"description": "They're supposed to be hard to catch.",
-		"type": "fish"
-	},
-	"Muskie" = {
-		"name": "Muskie",
-		"icon": "res://assets/visual/icons/fishing/shadow/18.png",
-		"value": 2,
-		"description": "It takes patience to catch these.",
+		"description": "I hear they're hard to find.",
 		"type": "fish"
 	},
 	"Bass" = {
 		"name": "Smallmouth Bass",
-		"icon": "res://assets/visual/icons/fishing/shadow/22.png",
+		"icon": "res://assets/visual/final_icons/Bass.png",
 		"value": 3,
-		"description": "People say they're good eating if they're fresh.",
+		"description": "People say they're good eating...",
 		"type": "fish"
 	},
 	"Shoe" = {
