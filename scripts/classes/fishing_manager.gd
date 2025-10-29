@@ -29,7 +29,7 @@ func start_fishing_minigame():
 	add_child(current_minigame)
 
 
-func _on_fishing_finished(success: bool, fish: FishType, value: int):
+func _on_fishing_finished(success: bool, _fish: FishType, _value: int):
 	if not current_minigame:
 		return
 	
@@ -37,11 +37,11 @@ func _on_fishing_finished(success: bool, fish: FishType, value: int):
 	current_minigame = null
 	
 	if player:
-		var item = fish if success else null
-		player.end_fishing(success, item)
+	#	var item = fish if success else null
+		player.end_fishing(success)
 		
-		if success:
-			add_item_to_inventory(fish, value)
+	#	if success:
+	#		add_item_to_inventory(fish, value)
 
 func add_item_to_inventory(fish: FishType, value: int):
 	

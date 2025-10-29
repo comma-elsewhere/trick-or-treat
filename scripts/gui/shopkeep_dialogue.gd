@@ -62,6 +62,7 @@ func ready_buttons():
 				
 
 func _on_dialogue_button_pressed(button_text: String):
+	Global.play_audio(self, "WetClick2", 0.74)
 	for key in talk.keys():
 		if button_text == talk[key].question:
 			shopkeep_dialogue.text = talk[key].answer

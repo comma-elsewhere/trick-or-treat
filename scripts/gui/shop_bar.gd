@@ -28,6 +28,7 @@ func _show_panel(panel: Control):
 	panel.visible = true
 	
 func navigate_to(panel: Control):
+	Global.play_audio(self, "WetClick2", 0.74)
 	if current_panel:
 		current_panel.visible = false
 	

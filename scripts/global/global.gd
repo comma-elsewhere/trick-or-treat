@@ -71,3 +71,11 @@ func _ready() -> void:
 	lake_strange.append(GConst.items["SF16"])
 	lake_strange.append(GConst.items["SF17"])
 	lake_strange.append(GConst.items["SF18"])
+
+func play_audio(sound_parent: Node, audio_file: String, offset: float):
+	var new_sound = AudioStreamPlayer.new()
+	var audio_file_path: String = "res://assets/audio/sound effects/" + audio_file + ".mp3"
+	new_sound.stream = load(audio_file_path)
+	new_sound.finished.connect(new_sound.queue_free)
+	sound_parent.add_child(new_sound)
+	new_sound.play(offset)

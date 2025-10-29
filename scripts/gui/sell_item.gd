@@ -11,4 +11,5 @@ func prepare_item(icon_path:String, item_name: String, item_price: int):
 	texture_rect.texture = load(icon_path)
 
 func _on_button_button_up() -> void:
+	Global.play_audio(self, "WetClick2", 0.74)
 	pass # Replace with function body.

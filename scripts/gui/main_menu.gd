@@ -31,6 +31,7 @@ func _show_panel(panel: Control):
 	panel.visible = true
 	
 func navigate_to(panel: Control):
+	Global.play_audio(self, "WetClick1", 1.25)
 	if current_panel:
 		current_panel.visible = false
 	
@@ -38,13 +39,17 @@ func navigate_to(panel: Control):
 	_show_panel(current_panel)
 
 func _on_back_button_button_up() -> void:
+	Global.play_audio(self, "WetClick1", 1.25)
 	navigate_to(main_settings)
 
 func _on_quit_button_up() -> void:
+	Global.play_audio(self, "WetClick1", 1.25)
 	get_tree().quit()
 
 func _on_new_game_button_up() -> void:
+	Global.play_audio(self, "WetClick1", 1.25)
 	get_tree().change_scene_to_file("res://scenes/levels/level.tscn")
 
 func _on_start_game_button_button_up() -> void:
+	Global.play_audio(self, "WetClick1", 1.25)
 	animation.play("menu_open")
