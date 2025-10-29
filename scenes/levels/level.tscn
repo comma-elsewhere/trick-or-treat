@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=20 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="AudioStream" uid="uid://cnsdejqgqukg8" path="res://assets/audio/sound effects/Water splash.mp3" id="1_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://l431yi2g0ukb" path="res://scenes/prefabs/player.tscn" id="2_6iamk"]
 [ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
+[ext_resource type="PackedScene" uid="uid://b42gamjua8r0l" path="res://scenes/levels/shop.tscn" id="5_5mi6g"]
 [ext_resource type="Script" path="res://scripts/classes/fishing_zone.gd" id="5_urvlt"]
 [ext_resource type="Script" uid="uid://cxrhphrxluw50" path="res://scripts/classes/fishing_manager.gd" id="6_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://tr141j3qjva" path="res://scenes/gui/fishing_minigame.tscn" id="7_xfk5q"]
@@ -14,11 +15,15 @@
 [ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="11_5mi6g"]
 [ext_resource type="Script" uid="uid://b5obpb0wck06l" path="res://scripts/misc/drowning_zone.gd" id="14_8iyoh"]
 [ext_resource type="Texture2D" uid="uid://cdalqrde4efq2" path="res://assets/backgrounds/lake_bg.png" id="14_mq31s"]
+[ext_resource type="Script" uid="uid://biyjdj2bj8kwl" path="res://scripts/misc/shop_zone.gd" id="16_b8j7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb4v1"]
 size = Vector2(2127.5, 76)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mq31s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iyoh"]
+size = Vector2(255, 176)
 
 [node name="Level" type="Node2D"]
 
@@ -32,7 +37,6 @@ bus = &"SFX"
 
 [node name="Water" type="Node2D" parent="." groups=["Water"]]
 z_index = 1
-position = Vector2(0, -60)
 script = ExtResource("1_ksju7")
 water_size = Vector2(2500, 550)
 segment_count = 512
@@ -42,47 +46,35 @@ surface_color = Color(0.06578119, 0.26788738, 0.35308748, 1)
 water_fill_color = Color(0.07450981, 0.2, 0.23529412, 1)
 metadata/_edit_lock_ = true
 
-[node name="Ground" type="StaticBody2D" parent="."]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="Polygon2D" type="Polygon2D" parent="Ground"]
-z_index = 2
-z_as_relative = false
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-1139, -48, -317, -73, 26, -64, 223, 48, 511, 455, 2507, 468, 2509, 573, -1116, 549)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
-z_index = 1
-position = Vector2(6, 6)
-polygon = PackedVector2Array(-1139, -57, -325, -80, 19, -70, 219, 46, 512, 451, 2495, 466, 2495, 562, -1107, 550)
-
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
 z_index = -1
-position = Vector2(-60, -123)
+position = Vector2(276, -11)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 z_index = 1
-position = Vector2(32, 36)
+position = Vector2(28, 32)
 offset = Vector2(0, 50)
 zoom = Vector2(0.8, 0.8)
-limit_left = -710
-limit_right = 2455
-limit_bottom = 400
+limit_left = 0
+limit_top = -600
+limit_right = 2500
+limit_bottom = 525
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera"]
 
 [node name="HUD" parent="Player/Camera/CanvasLayer" instance=ExtResource("3_b2cq8")]
 
+[node name="Shop" parent="Player/Camera/CanvasLayer" instance=ExtResource("5_5mi6g")]
+visible = false
+
 [node name="Boat" parent="." instance=ExtResource("4_xb4v1")]
-z_index = 0
-position = Vector2(175, -34)
+position = Vector2(353, -4)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_urvlt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1422.25, -106)
+position = Vector2(1426, -72)
 shape = SubResource("RectangleShape2D_xb4v1")
 
 [node name="fishing_manager" type="Node" parent="."]
@@ -92,7 +84,7 @@ available_fish = Array[ExtResource("8_qogh7")]([ExtResource("9_8iyoh"), ExtResou
 default_rod = ExtResource("11_5mi6g")
 
 [node name="DrowningZone" type="Area2D" parent="."]
-position = Vector2(269, 75)
+position = Vector2(266, 426)
 script = ExtResource("14_8iyoh")
 metadata/_edit_group_ = true
 
@@ -101,9 +93,20 @@ shape = SubResource("WorldBoundaryShape2D_mq31s")
 
 [node name="LakeBg" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(1017, -273)
+position = Vector2(1725, -281)
 texture = ExtResource("14_mq31s")
 flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="ShopZone" type="Area2D" parent="." node_paths=PackedStringArray("shop")]
+position = Vector2(199, -164)
+script = ExtResource("16_b8j7q")
+shop = NodePath("../Player/Camera/CanvasLayer/Shop")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopZone"]
+position = Vector2(-10.5, 40)
+shape = SubResource("RectangleShape2D_8iyoh")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

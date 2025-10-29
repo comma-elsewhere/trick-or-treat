@@ -38,6 +38,7 @@ CanSplash=""
 Player=""
 Boat=""
 Water=""
+Shop=""
 
 [gui]
 

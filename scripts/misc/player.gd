@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var boat = get_tree().get_first_node_in_group("Boat")
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -300.0
@@ -14,7 +15,7 @@ signal finished_fishing(success: bool, item: Resource)
 var is_fishing: bool = false
 var is_waiting_for_bite: bool = false
 
-@onready var boat = get_tree().get_first_node_in_group("Boat")
+var disable_self: bool = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -85,22 +86,9 @@ func end_fishing(success: bool, item: Resource):
 	
 	set_physics_process(true)
 
-func _physics_process(delta: float) -> void:
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	
-	if !boat.player_in_boat:
-		var direction := Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+func _physics_process(_delta: float) -> void:
+	global_position.y = boat.global_position.y -30
+	global_position.x = boat.global_position.x
 
 	move_and_slide()
 	

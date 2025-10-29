@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var water: Water = get_tree().get_first_node_in_group("Water")
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 const SPEED: float = 150.0
 
@@ -11,23 +12,23 @@ var segment_length: float
 func _ready() -> void:
 	var_setup()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	dist_to_water = global_position.distance_to(water.global_position)
 	var segment_index = int(dist_to_water / segment_length)
-	global_position.y = water.segment_data[segment_index].height - 30.0
+	global_position.y = water.segment_data[segment_index].height
 	
 	var dy = water.segment_data[segment_index+1].height - water.segment_data[segment_index - 1].height
 	var angle = atan2(dy,segment_length*2)
 	rotation = lerp_angle(rotation, angle, 0.1)
 	
-	if player_in_boat:
+	if !player.disable_self:
 		var dir:= Input.get_axis("left","right")
 		if dir:
 			velocity.x = dir * SPEED
 		else:
-			velocity.x = lerp(velocity.x, 0.0, 0.2*delta)
+			velocity.x = lerp(velocity.x, 0.0, 0.1)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, 0.5)
+		velocity.x = 0.0
 		
 	move_and_slide()
 	

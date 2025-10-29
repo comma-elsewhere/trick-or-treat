@@ -113,86 +113,65 @@ var items: Dictionary = {
 		"description": "It's been crushed in.",
 		"type": "loot"
 	},
-	"GoodCharm" = {
+	"Charm" = {
 		"name": "Five of Diamonds",
-		"icon": "res://assets/visual/icons/fishing/shadow/34.png",
+		"icon": "res://assets/visual/final_icons/Jack_Ole_Diamond_Hook.png",
 		"value": 1,
 		"description": "Apparently brings good luck.",
 		"type": "charm"
 	},
-	"BadCharm" = {
-		"name": "Bad Luck Charm",
-		"icon": "res://assets/visual/icons/fishing/shadow/35.png",
-		"value": 1,
-		"description": "The shopkeep said this will lead me to dark places.",
-		"type": "charm"
-	},
-	"SoulCharm" = {
-		"name": "Dream Catcher",
-		"icon": "res://assets/visual/icons/fishing/shadow/36.png",
-		"value": 1,
-		"description": "This was is supposed to guide wayward souls.",
-		"type": "charm"
-	},
 	"BasicRod" = {
 		"name": "Basic Rod",
-		"icon": "res://assets/visual/icons/fishing/shadow/37.png",
+		"icon": "res://assets/visual/final_icons/Beginner_Rod.png",
 		"value": 1,
 		"description": "It's all I have.",
 		"type": "rod"
 	},
 	"AdvancedRod" = {
 		"name": "Advanced Rod",
-		"icon": "res://assets/visual/icons/fishing/shadow/38.png",
+		"icon": "res://assets/visual/final_icons/Advanced_Rod.png",
 		"value": 1,
 		"description": "I can fish deeper with this.",
 		"type": "rod"
 	},
 	"CursedRod" = {
 		"name": "Cursed Rod",
-		"icon": "res://assets/visual/icons/fishing/shadow/39.png",
+		"icon": "res://assets/visual/final_icons/Cursed_Rod.png",
 		"value": 1,
 		"description": "I don't care about safety anymore.",
 		"type": "rod"
 	},
 	"Bait" = {
 		"name": "Bait",
-		"icon": "res://assets/visual/icons/fishing/shadow/31.png",
+		"icon": "res://assets/visual/final_icons/Bait.png",
 		"value": 1,
 		"description": "This will attract more fish.",
 		"type": "charm"
 	},
 	"Chum" = {
 		"name": "Chum",
-		"icon": "res://assets/visual/icons/fishing/shadow/33.png",
+		"icon": "res://assets/visual/final_icons/Chum.png",
 		"value": 1,
 		"description": "I'm not sure what this will attract.",
 		"type": "charm"
 	},
 	"HookOne" = {
-		"name": "Training Hook",
-		"icon": "res://assets/visual/icons/fishing/shadow/43.png",
+		"name": "Makeshift Hook",
+		"icon": "res://assets/visual/final_icons/Basic_Hook.png",
 		"value": 1,
 		"description": "The only one we had.",
 		"type": "hook"
 	},
 	"HookTwo" = {
-		"name": "Beginner Hook",
-		"icon": "res://assets/visual/icons/fishing/shadow/44.png",
+		"name": "Normal Hook",
+		"icon": "res://assets/visual/final_icons/Beginner_Hook.png",
 		"value": 1,
 		"description": "It'll do the job.",
 		"type": "hook"
 	},
 	"HookThree" = {
-		"name": "Normal Hook",
-		"icon": "res://assets/visual/icons/fishing/shadow/45.png",
-		"value": 1,
-		"description": "I need to do this.",
-		"type": "hook"
-	},
-	"HookFour" = {
 		"name": "Pro Hook",
-		"icon": "res://assets/visual/icons/fishing/shadow/46.png",
+		"icon": "res://assets/visual/final_icons/Advanced_Hook.png",
 		"value": 1,
 		"description": "I am going to find her no matter the cost.",
 		"type": "hook"

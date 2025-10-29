@@ -28,9 +28,10 @@ func _ready() -> void:
 	upgrade_stock.append(GConst.items["HookTwo"])
 	upgrade_stock.append(GConst.items["AdvancedRod"])
 	
-	mystery_stock.append(GConst.items["GoodCharm"])
-	mystery_stock.append(GConst.items["BadCharm"])
-	mystery_stock.append(GConst.items["SoulCharm"])
+	mystery_stock.append(GConst.items["Chum"])
+	mystery_stock.append(GConst.items["Charm"])
+	mystery_stock.append(GConst.items["HookThree"])
+	mystery_stock.append(GConst.items["CursedRod"])
 	
 	lake_stock.append(GConst.items["Whitefish"])
 	lake_stock.append(GConst.items["Lamprey"])
