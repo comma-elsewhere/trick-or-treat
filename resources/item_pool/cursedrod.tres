@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RodType" load_steps=2 format=3 uid="uid://dcynfpfmfxt6f"]
+
+[ext_resource type="Script" uid="uid://do2khvdmcfpxu" path="res://scripts/classes/rod_type.gd" id="1_ot2mg"]
+
+[resource]
+script = ExtResource("1_ot2mg")
+rod_name = "Cursed Rod"
+bar_size_bonus = 50.0
+bar_accel = 1430.0
+bar_drag = 0.05
+bar_gravity = 190.0
+bite_rate_mult = 0.9199999999999999
+escape_drain_mult = 0.85
+metadata/_custom_type_script = "uid://do2khvdmcfpxu"

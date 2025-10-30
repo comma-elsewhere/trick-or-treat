@@ -162,13 +162,13 @@ script = ExtResource("4_8cdkg")
 
 [node name="dots" type="Sprite2D" parent="fishing_indicator"]
 texture_filter = 1
-position = Vector2(32, -18)
+position = Vector2(2, -56)
 scale = Vector2(4.125, 3.75)
 texture = ExtResource("5_6o77n")
 
 [node name="exclamation" type="Sprite2D" parent="fishing_indicator"]
 texture_filter = 1
-position = Vector2(32, -40)
+position = Vector2(0, -78)
 scale = Vector2(3.5, 3.6875)
 texture = ExtResource("6_6v0jn")
 

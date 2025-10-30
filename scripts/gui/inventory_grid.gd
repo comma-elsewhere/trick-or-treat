@@ -27,6 +27,7 @@ func refill_inventory():
 #			new_item.set_item(Global.inventory_stock.back().icon, Global.inventory_stock.back().name, Global.inventory_stock.back().description)
 #			children[inventory_count].add_child(new_item)
 			
+			
 func fill_inventory():
 	for i in range(Global.inventory_stock.size()):
 		var new_item = inv_item.instantiate()

@@ -142,7 +142,6 @@ func _fail(_why: String):
 func _success():
 	_state = STATE.END
 	sfx_catch.play()
-	label_name.show()
  
 	_shake(10.0, 0.25)
 	_punch_ui(root_ui, 1.12, 0.18)
@@ -176,7 +175,6 @@ func _set_catch_bar_visual():
 	catch_bar.global_position = Vector2(bar_track.global_position.x + bar_track.size.x*0.05, y_top)
  
 func _set_defaults():
-	label_name.text = fish.fish_name
 	bar_track.modulate = fish.tint.lerp(Color.DARK_BLUE, 0.5)
 	_bar_h = BASE_BAR_HEIGHT + rod.bar_size_bonus
 	_hook_window = BASE_HOOK_WINDOW * rod.hook_window_mult
