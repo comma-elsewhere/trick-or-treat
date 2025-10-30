@@ -27,9 +27,39 @@ func _on_button_button_up() -> void:
 		if mystery:
 			stock_index = Global.mystery_stock.find(item)
 			var hold_item = Global.mystery_stock.pop_at(stock_index)
-			Global.inventory_stock.append(hold_item)
+			_edit_equipment(hold_item)
 		else:
 			stock_index = Global.upgrade_stock.find(item)
 			var hold_item = Global.upgrade_stock.pop_at(stock_index)
-			Global.inventory_stock.append(hold_item)
+			_edit_equipment(hold_item)
+			
 		call_deferred("queue_free")
+
+func _edit_equipment(new_item: Dictionary):
+	match new_item.type:
+		"rod":
+			var key = GConst.items.find_key(Global.equipment["Rod"])
+			Global.inventory_stock.append(GConst.items[key])
+			Global.equipment["Rod"] = new_item
+		"hook":
+			var key = GConst.items.find_key(Global.equipment["Hook"])
+			Global.inventory_stock.append(GConst.items[key])
+			Global.equipment["Hook"] = new_item
+		"charm":
+			if Global.equipment["Charm"] != null:
+				var key = GConst.items.find_key(Global.equipment["Charm"])
+				Global.inventory_stock.append(GConst.items[key])
+			Global.equipment["Charm"] = new_item
+			
+	if new_item.name == "Advanced Rod" or new_item.name == "Normal Hook":
+		if !Global.lake_loot.is_empty():
+			Global.lake_stock.append_array(Global.lake_loot)
+			Global.lake_loot.clear()
+	elif new_item.name == "Cursed Rod" or new_item.name == "Pro Hook" or new_item.name == "Chum":
+		if !Global.lake_strange.is_empty():
+			Global.lake_stock.append_array(Global.lake_strange)
+			Global.lake_strange.clear()
+	elif new_item.name == "Charm":
+		if !Global.lake_special.is_empty():
+			Global.lake_stock.append_array(Global.lake_special)
+			Global.lake_special.clear()

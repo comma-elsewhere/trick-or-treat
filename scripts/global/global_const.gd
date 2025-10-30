@@ -38,51 +38,51 @@ var items: Dictionary = {
 	},
 	"Shoe" = {
 		"name": "Child's Shoe",
-		"icon": "res://assets/visual/icons/loot/shadow/17.png",
-		"value": 3,
-		"description": "It looks familiar...",
+		"icon": "res://assets/visual/final_icons/Child Shoe.png",
+		"value": 5,
+		"description": "It looks so familiar...",
 		"type": "loot"
 	},
 	"Skull" = {
 		"name": "Mossy Skull",
-		"icon": "res://assets/visual/icons/loot/shadow/19.png",
-		"value": 3,
-		"description": "It couldn't be, you have to keep looking.",
+		"icon": "res://assets/visual/final_icons/Skull.png",
+		"value": 8,
+		"description": "It couldn't be... You have to keep looking.",
 		"type": "loot"
 	},
-	"Dagger" = {
-		"name": "Ritual Dagger",
-		"icon": "res://assets/visual/icons/loot/shadow/16.png",
-		"value": 3,
-		"description": "What was this used for?",
-		"type": "loot"
-	},
-	"Ring" = {
-		"name": "Familiar Ring",
-		"icon": "res://assets/visual/icons/loot/shadow/1.png",
-		"value": 3,
-		"description": "You've seen this before.",
+	"SquidSkull" = {
+		"name": "???",
+		"icon": "res://assets/visual/final_icons/Squid Head.png",
+		"value": 10,
+		"description": "This has to be a Halloween prop.",
 		"type": "loot"
 	},
 	"Locket" = {
 		"name": "Laura's Locket",
-		"icon": "res://assets/visual/icons/loot/shadow/2.png",
-		"value": 3,
-		"description": "This was your daughter's necklace.",
+		"icon": "res://assets/visual/final_icons/Child Locket.png",
+		"value": 6,
+		"description": "It's definitely hers.",
 		"type": "loot"
 	},
-	"SkullPartOne" = {
-		"name": "Partial SKull",
-		"icon": "res://assets/visual/icons/bones/without_shadow/1.png",
-		"value": 3,
-		"description": "There are teeth marks in it.",
+	"HairClip" = {
+		"name": "Hair Clip",
+		"icon": "res://assets/visual/final_icons/Child Hair Clip.png",
+		"value": 4,
+		"description": "This looks like Laura's.",
 		"type": "loot"
 	},
-	"SkullPartTwo" = {
-		"name": "Partial SKull",
-		"icon": "res://assets/visual/icons/bones/without_shadow/5.png",
+	"Raincoat" = {
+		"name": "Small Raincoat",
+		"icon": "res://assets/visual/final_icons/Child Raincoat.png",
 		"value": 3,
-		"description": "It's been crushed in.",
+		"description": "This is what she was wearing last.",
+		"type": "loot"
+	},
+	"Hat" = {
+		"name": "Child's Hat",
+		"icon": "res://assets/visual/final_icons/Child Hat.png",
+		"value": 3,
+		"description": "It's hers, you must be getting close.",
 		"type": "loot"
 	},
 	"Charm" = {
@@ -95,56 +95,56 @@ var items: Dictionary = {
 	"BasicRod" = {
 		"name": "Basic Rod",
 		"icon": "res://assets/visual/final_icons/Beginner_Rod.png",
-		"value": 1,
+		"value": 0,
 		"description": "It's all I have.",
 		"type": "rod"
 	},
 	"AdvancedRod" = {
 		"name": "Advanced Rod",
 		"icon": "res://assets/visual/final_icons/Advanced_Rod.png",
-		"value": 1,
+		"value": 15,
 		"description": "I can fish deeper with this.",
 		"type": "rod"
 	},
 	"CursedRod" = {
 		"name": "Cursed Rod",
 		"icon": "res://assets/visual/final_icons/Cursed_Rod.png",
-		"value": 1,
+		"value": 30,
 		"description": "I don't care about safety anymore.",
 		"type": "rod"
 	},
 	"Bait" = {
 		"name": "Bait",
 		"icon": "res://assets/visual/final_icons/Bait.png",
-		"value": 1,
+		"value": 5,
 		"description": "This will attract more fish.",
 		"type": "charm"
 	},
 	"Chum" = {
 		"name": "Chum",
 		"icon": "res://assets/visual/final_icons/Chum.png",
-		"value": 1,
+		"value": 10,
 		"description": "I'm not sure what this will attract.",
 		"type": "charm"
 	},
 	"HookOne" = {
 		"name": "Makeshift Hook",
 		"icon": "res://assets/visual/final_icons/Basic_Hook.png",
-		"value": 1,
+		"value": 0,
 		"description": "The only one we had.",
 		"type": "hook"
 	},
 	"HookTwo" = {
 		"name": "Normal Hook",
 		"icon": "res://assets/visual/final_icons/Beginner_Hook.png",
-		"value": 1,
+		"value": 6,
 		"description": "It'll do the job.",
 		"type": "hook"
 	},
 	"HookThree" = {
 		"name": "Pro Hook",
 		"icon": "res://assets/visual/final_icons/Advanced_Hook.png",
-		"value": 1,
+		"value": 12,
 		"description": "I am going to find her no matter the cost.",
 		"type": "hook"
 	},

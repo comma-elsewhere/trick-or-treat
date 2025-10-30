@@ -2,6 +2,7 @@ extends Node
 
 var health: int = 20
 var currency: int = 20
+var lore_counter: int = 0
 
 #additionary arrays to be appended to lake_stock
 var lake_loot: Array[Dictionary] = []
@@ -44,13 +45,13 @@ func _ready() -> void:
 	lake_stock.append(GConst.items["Walleye"])
 	lake_stock.append(GConst.items["Bass"])
 
-	lake_loot.append(GConst.items["Ring"])
-	lake_loot.append(GConst.items["Skull"])
-	lake_loot.append(GConst.items["Dagger"])
-	lake_loot.append(GConst.items["Locket"])
 	lake_loot.append(GConst.items["Shoe"])
-	lake_loot.append(GConst.items["SkullPartOne"])
-	lake_loot.append(GConst.items["SkullPartTwo"])
+	lake_loot.append(GConst.items["Skull"])
+	lake_loot.append(GConst.items["SquidSkull"])
+	lake_loot.append(GConst.items["Locket"])
+	lake_loot.append(GConst.items["HairClip"])
+	lake_loot.append(GConst.items["Raincoat"])
+	lake_loot.append(GConst.items["Hat"])
 	
 	lake_special.append(GConst.items["Laura"])
 	

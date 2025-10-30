@@ -25,7 +25,8 @@ func _input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	dist_to_water = global_position.distance_to(water.global_position)
 	var segment_index = int(dist_to_water / segment_length)
-	global_position.y = water.segment_data[segment_index].height -48.0
+	if segment_index < water.segment_count:
+		global_position.y = water.segment_data[segment_index].height -48.0
 	
 	var dy = water.segment_data[segment_index+1].height - water.segment_data[segment_index - 1].height
 	var angle = atan2(dy,segment_length*2)

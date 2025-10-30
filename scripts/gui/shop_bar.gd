@@ -19,8 +19,11 @@ func _ready() -> void:
 	_show_panel(upgrades)
 	
 	upgrades_button.pressed.connect(navigate_to.bind(upgrades))
+	upgrades_button.pressed.connect(upgrades.restock)
 	buy_stuff_button.pressed.connect(navigate_to.bind(other_stuff))
+	buy_stuff_button.pressed.connect(other_stuff.restock)
 	sell_button.pressed.connect(navigate_to.bind(sell_fish))
+	sell_button.pressed.connect(sell_fish.restock)
 	talk_button.pressed.connect(navigate_to.bind(talk))
 	question_button.pressed.connect(navigate_to.bind(question))
 
