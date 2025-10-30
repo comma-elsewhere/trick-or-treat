@@ -3,10 +3,11 @@ extends Node
 
 @export var fishing_minigame_scene: PackedScene  
 @export var available_fish: Array[FishType] = []
-# @export var default_rod: RodType  ← Ya no necesitas esto
+@export var max_escapes: int = 3  
 
 var current_minigame: CanvasLayer
 var player: CharacterBody2D
+var escape_count: int = 0  
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -18,7 +19,7 @@ func _on_player_started_fishing():
 
 func start_fishing_minigame():
 	var random_fish = available_fish.pick_random()
-	var current_rod = Global.get_current_rod()  
+	var current_rod = Global.get_current_rod()
 	
 	if not current_rod:
 		push_error("No rod available!")
@@ -40,6 +41,17 @@ func _on_fishing_finished(success: bool, _fish: FishType, _value: int):
 	
 	if player:
 		player.end_fishing(success)
+		
+		
+		if not success:
+			escape_count += 1
+			print("Fish escaped! ", escape_count, "/", max_escapes)
+			
+			if escape_count >= max_escapes:
+				player.death()
+		else:
+			
+			escape_count = 0
 
 func add_item_to_inventory(fish: FishType, value: int):
 	print("¡Pescaste: ", fish.fish_name, "! Valor: ", value)

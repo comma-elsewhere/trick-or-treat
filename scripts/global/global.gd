@@ -19,7 +19,7 @@ var rods: Dictionary = {
 	"cursed": preload("res://resources/item_pool/cursedrod.tres")
 }
 
-var current_rod_id: String = "cursed" 
+var current_rod_id: String = "advanced" 
 
 var equipment = {
 	"Rod": preload("res://resources/item_pool/cursedrod.tres"),

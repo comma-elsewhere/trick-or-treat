@@ -102,14 +102,14 @@ var items: Dictionary = {
 	"AdvancedRod" = {
 		"name": "Advanced Rod",
 		"icon": "res://assets/visual/final_icons/Advanced_Rod.png",
-		"value": 1,
+		"value": 15,
 		"description": "I can fish deeper with this.",
 		"type": "rod"
 	},
 	"CursedRod" = {
 		"name": "Cursed Rod",
 		"icon": "res://assets/visual/final_icons/Cursed_Rod.png",
-		"value": 1,
+		"value": 25,
 		"description": "I don't care about safety anymore.",
 		"type": "rod"
 	},
