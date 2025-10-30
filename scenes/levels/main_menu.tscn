@@ -97,7 +97,7 @@ _data = {
 &"menu_open": SubResource("Animation_ohdsy")
 }
 
-[node name="MenuControl" type="Control" node_paths=PackedStringArray("animation", "main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button")]
+[node name="MenuControl" type="Control" node_paths=PackedStringArray("animation", "main_menu", "main_settings", "video_settings", "audio_settings", "control_map", "settings_button", "video_button", "audio_button", "controls_button", "return_button") groups=["Audio"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

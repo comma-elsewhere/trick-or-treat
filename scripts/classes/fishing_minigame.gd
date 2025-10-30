@@ -195,6 +195,12 @@ func _set_defaults():
 	_treasure_val = 0.0
  
 	_punch_ui(root_ui, 1.03, 0.12)
+	
+#	var current_rod: String = Global.equipment["Rod"].name
+#	var current_hook: String = Global.equipment["Hook"].name
+#	var current_charm: String
+#	if Global.equipment["Charm"] != "null":
+#		current_charm = Global.equipment["Charm"].name
  
 func _set_fish_visual():
 	var y: float = lerp(
