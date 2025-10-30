@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+const OPENING_LINE_1 := "I need to find my daughter..."
+const OPENING_LINE_2 := "This is where she went missing. \n There must be answers somewhere around here."
+var TUTORIAL_1 := "[Press " + InputMap.get_action_description("interact") + " to cast your fishing line\nor open and close the shop]"
+var TUTORIAL_2 := "[Press " + InputMap.get_action_description("attack") + " to catch something!]"
+var TUTORIAL_3 := "[Press " + InputMap.get_action_description("inventory") + " to check your items]"
+const OUCH := "Ouch! Something bit me..."
+
 signal started_fishing()
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -7,6 +14,7 @@ signal started_fishing()
 @onready var boat = get_tree().get_first_node_in_group("Boat")
 
 @export var catch_window: float = 1.0
+@export var speech_bubble: Label
 
 enum State {
 	CANNOT_FISH, 
@@ -21,11 +29,20 @@ var can_fish: bool = false
 var disable_self: bool = false
 var fishing_cancelled: bool = false  # ← Nueva variable
 
+var opening_lines: bool = false
+var tutorial_1: bool = false
+var tutorial_2: bool = false
+var tutorial_3: bool = false
+
 func _ready() -> void:
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	speech_bubble.visible = false
 	fishing_state = State.CANNOT_FISH
 	animation_player.play("fade-in")
+	if !opening_lines:
+		await speak(OPENING_LINE_1)
+		opening_lines = await speak(OPENING_LINE_2)
 
 # Versión final recomendada
 func _input(event):
@@ -52,7 +69,6 @@ func _input(event):
 		
 		# Si el pez picó (!), capturar
 		elif fishing_state == State.FISH_AVAILABLE:
-			Global.play_audio(self, "FishingRodReel", 0.81)
 			_start_fish_minigame()
 
 func _can_start_fishing() -> bool:
@@ -75,6 +91,9 @@ func _process(_delta: float) -> void:
 		fishing_indicator.hide()
 		if fishing_state == State.WAITING:
 			_cancel_fishing()
+			
+	if fishing_state == State.CAN_FISH and !tutorial_1 and opening_lines:
+		tutorial_1 = await speak(TUTORIAL_1)
 
 func _physics_process(_delta: float) -> void:
 	global_position.y = boat.global_position.y - 30
@@ -83,10 +102,12 @@ func _physics_process(_delta: float) -> void:
 
 func _waiting_for_fish() -> void:
 	fishing_state = State.WAITING
+	Global.play_audio(self, "Fishing rod reel 1", 0.81)
 	fishing_cancelled = false  # Reset flag
 	
 	if fishing_indicator:
 		fishing_indicator.show_waiting()
+		
 	
 	if !Global.lake_stock.is_empty():
 		# Espera para que pique
@@ -101,6 +122,9 @@ func _waiting_for_fish() -> void:
 		fishing_state = State.FISH_AVAILABLE
 		if fishing_indicator:
 			fishing_indicator.show_exclamation()
+			
+		if !tutorial_2 and tutorial_1:
+			tutorial_2 = await speak(TUTORIAL_2)
 		
 		# Ventana de captura
 		await get_tree().create_timer(catch_window).timeout
@@ -138,6 +162,23 @@ func end_fishing(success: bool):
 			var random_int = randi_range(0, Global.lake_stock.size() - 1)
 			var caught_fish = Global.lake_stock.pop_at(random_int)
 			Global.inventory_stock.append(caught_fish)
+			
+		if !tutorial_3 and tutorial_2:
+			tutorial_3 = await speak(TUTORIAL_3)
+
+func speak(words: String) -> bool:
+	if !speech_bubble.visible:
+		speech_bubble.text = words
+		speech_bubble.visible = true
+		await get_tree().create_timer(3.0,false).timeout
+		speech_bubble.visible = false
+		speech_bubble.text = ""
+		return true
+	else:
+		return false
+
+func ouch():
+	speak(OUCH)
 
 func death():
 	animation_player.play("fadeout")

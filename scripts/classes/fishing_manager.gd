@@ -44,11 +44,18 @@ func _on_fishing_finished(success: bool, _fish: FishType, _value: int):
 		
 		
 		if not success:
-			escape_count += 1
-			print("Fish escaped! ", escape_count, "/", max_escapes)
+			#escape_count += 1
+			#print("Fish escaped! ", escape_count, "/", max_escapes)
 			
-			if escape_count >= max_escapes:
+			#if escape_count >= max_escapes:
+			#	player.death()
+			
+			Global.health -= 2
+			if Global.health <= 0:
 				player.death()
+			else:
+				player.ouch()
+			
 		else:
 			
 			escape_count = 0

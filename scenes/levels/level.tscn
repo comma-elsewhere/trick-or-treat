@@ -52,7 +52,6 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
 z_index = -1
 position = Vector2(284, -77)
-catch_window = null
 
 [node name="Camera" type="Camera2D" parent="Player"]
 z_index = 1

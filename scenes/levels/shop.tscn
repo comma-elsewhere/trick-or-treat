@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b42gamjua8r0l"]
+[gd_scene load_steps=14 format=3 uid="uid://b42gamjua8r0l"]
 
 [ext_resource type="Texture2D" uid="uid://b5cvlnckop2jw" path="res://assets/visual/gui/import/window_7.png" id="1_27pq4"]
 [ext_resource type="Script" uid="uid://sn7tuo7tk0nq" path="res://scripts/gui/shop_bar.gd" id="1_f1n2c"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dom6ae88luf2q" path="res://assets/visual/gui/import/dec_11.png" id="7_ly47m"]
 [ext_resource type="Script" uid="uid://beb7bgehqhpo2" path="res://scripts/gui/update_label.gd" id="8_l8xn7"]
 [ext_resource type="Texture2D" uid="uid://bq26h8wrtmjp" path="res://assets/visual/gui/import/dec_9.png" id="9_htxc8"]
+[ext_resource type="Texture2D" uid="uid://dyuwk05iyoxcm" path="res://assets/visual/gui/import/dec_7.png" id="10_l8xn7"]
 
 [sub_resource type="Gradient" id="Gradient_ssevm"]
 offsets = PackedFloat32Array(0, 0.9533333, 1)
@@ -366,6 +367,24 @@ script = ExtResource("8_l8xn7")
 type = "Lore"
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HealthRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("10_l8xn7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "00"
+vertical_alignment = 2
+script = ExtResource("8_l8xn7")
+type = "Health"
+
+[node name="Control3" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 

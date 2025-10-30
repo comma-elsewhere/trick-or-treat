@@ -151,133 +151,133 @@ var items: Dictionary = {
 	"SF1" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/2.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "It's looking at me with so much intelligence.",
 		"type": "strange"
 	},
 	"SF2" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/3.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 7,
+		"description": "There's something unearthly about this one.",
 		"type": "strange"
 	},
 	"SF3" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/9.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 6,
+		"description": "It seems to be crying.",
 		"type": "strange"
 	},
 	"SF4" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/10.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "This one is groaning in pain.",
 		"type": "strange"
 	},
 	"SF5" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/11.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 7,
+		"description": "He looks familiar.",
 		"type": "strange"
 	},
 	"SF6" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/12.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 6,
+		"description": "Is that human?",
 		"type": "strange"
 	},
 	"SF7" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/17.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "It just said my name...",
 		"type": "strange"
 	},
 	"SF8" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/18.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 7,
+		"description": "It seems to be begging for help.",
 		"type": "strange"
 	},
 	"SF9" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/21.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 6,
+		"description": "This one is muttering about lost souls.",
 		"type": "strange"
 	},
 	"SF10" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/22.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "She seems like she wants to die...",
 		"type": "strange"
 	},
 	"SF11" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/23.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 7,
+		"description": "It almost seems... human.",
 		"type": "strange"
 	},
 	"SF12" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/24.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 6,
+		"description": "I feel like it needs my help...",
 		"type": "strange"
 	},
 	"SF13" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/28.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "It's almost too human to look at.",
 		"type": "strange"
 	},
 	"SF14" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/29.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 8,
+		"description": "The Third Eye",
 		"type": "strange"
 	},
 	"SF15" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/38.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 7,
+		"description": "They need me...",
 		"type": "strange"
 	},
 	"SF16" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/40.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 10,
+		"description": "This one seems like it has malintent.",
 		"type": "strange"
 	},
 	"SF17" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/45.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 6,
+		"description": "It seems malicious, but is it?",
 		"type": "strange"
 	},
 	"SF18" = {
 		"name": "Strange Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/48.png",
-		"value": 3,
-		"description": "This was once alive.",
+		"value": 5,
+		"description": "Did you have a hand in this?",
 		"type": "strange"
 	},
 	"Laura" = {
-		"name": "Familiar Fish",
+		"name": "Special Fish",
 		"icon": "res://assets/visual/icons/strange fish/shadow/42.png",
-		"value": 3,
+		"value": 20,
 		"description": "Laura...?",
 		"type": "special"
 	},

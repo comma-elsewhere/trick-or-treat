@@ -110,10 +110,11 @@ _data = {
 &"fadeout": SubResource("Animation_8cdkg")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["CanSplash", "Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("speech_bubble") groups=["CanSplash", "Player"]]
 scale = Vector2(0.5, 0.5)
 platform_on_leave = 2
 script = ExtResource("1_tou0u")
+speech_bubble = NodePath("Speech")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -171,5 +172,17 @@ texture_filter = 1
 position = Vector2(0, -78)
 scale = Vector2(3.5, 3.6875)
 texture = ExtResource("6_6v0jn")
+
+[node name="Speech" type="Label" parent="."]
+z_index = 5
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -164.0
+offset_top = -156.0
+offset_right = 182.0
+offset_bottom = -116.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "This is a text bubble"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

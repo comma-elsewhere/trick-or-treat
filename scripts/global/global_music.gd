@@ -18,13 +18,12 @@ func _play_intro():
 	audio_player.stream = intro
 	audio_player.play()
 	await get_tree().create_timer(intro_time).timeout
+	audio_player.stream = loop
 	_play_loop()
 	
 func _play_loop():
-	audio_player.stop()
-	audio_player.stream = loop
 	audio_player.play(0.0)
-	if audio_player.get_playback_position() >= loop_time:
-		_play_loop()
-	
+	await get_tree().create_timer(loop_time).timeout
+	audio_player.stop()
+	_play_loop()
 	
