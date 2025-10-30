@@ -5,12 +5,14 @@ const STRANGE_FISH: int = 3
 const SPECIAL_FISH: int = 10
 
 @export var texture_rect: TextureRect
+@export var button: Button
 
 var item: Dictionary
 
 func prepare_item(item_dict: Dictionary):
 	item = item_dict
 	texture_rect.texture = load(item_dict.icon)
+	button.text = "SELL $" + str(item_dict.value)
 
 func _on_button_button_up() -> void:
 	Global.play_audio(self, "WetClick2", 0.74)

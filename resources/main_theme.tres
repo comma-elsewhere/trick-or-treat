@@ -17,12 +17,13 @@ texture_margin_right = 12.0
 texture_margin_bottom = 10.0
 
 [resource]
-Label/font_sizes/font_size = 32
-menu_button/base_type = &"shop"
+Label/font_sizes/font_size = 24
+menu_button/base_type = &"Button"
 menu_button/colors/font_color = Color(0.16565639, 0.16565642, 0.16565639, 1)
 menu_button/colors/font_disabled_color = Color(0.45840496, 0.45840508, 0.4584049, 1)
 menu_button/colors/font_focus_color = Color(0, 0, 0, 1)
 menu_button/colors/font_hover_color = Color(0, 0, 0, 1)
+menu_button/font_sizes/font_size = 16
 menu_button/styles/disabled = SubResource("StyleBoxTexture_biaja")
 menu_button/styles/focus = SubResource("StyleBoxTexture_biaja")
 menu_button/styles/hover = SubResource("StyleBoxTexture_biaja")
@@ -32,7 +33,7 @@ scroll_panel/base_type = &"PanelContainer"
 scroll_panel/styles/panel = SubResource("StyleBoxTexture_ols5k")
 shop/base_type = &"Button"
 shop/colors/font_color = Color(0, 0, 0, 1)
-shop/font_sizes/font_size = 32
+shop/font_sizes/font_size = 24
 shop/styles/disabled = SubResource("StyleBoxTexture_vnc4k")
 shop/styles/focus = SubResource("StyleBoxTexture_vnc4k")
 shop/styles/hover = SubResource("StyleBoxTexture_vnc4k")
