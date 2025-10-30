@@ -17,7 +17,9 @@ extends Control
 var current_panel 
 
 func _ready() -> void:
-	animation.play("game_open")
+	if !Global.intro_played:
+		animation.play("game_open")
+		Global.intro_played = true
 	current_panel = main_menu
 	_show_panel(main_menu)
 	
@@ -53,3 +55,7 @@ func _on_new_game_button_up() -> void:
 func _on_start_game_button_button_up() -> void:
 	Global.play_audio(self, "WetClick1", 1.25)
 	animation.play("menu_open")
+
+
+func _on_music_finished() -> void:
+	$Music.play()

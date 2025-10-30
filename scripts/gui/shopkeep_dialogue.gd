@@ -14,27 +14,27 @@ var option_buttons: Array
 
 var talk: Dictionary = {
 	"option_one" = {
-		"question" : "Good morning",
-		"answer" : "You shouldn't be here.",
+		"question" : "I'm looking for my daughter.",
+		"answer" : ". . .",
 		"hide" : true,
-		"unlock" : null
+		"unlock" : "unlock_two"
 	},
 	"option_two" = {
-		"question" : "Crazy place, huh?",
-		"answer" : "You have no idea...",
-		"hide" : true,
-		"unlock" : null
+		"question" : "Have you seen any children around here?",
+		"answer" : "Have you looked in the lake...?",
+		"hide" : false,
+		"unlock" : "unlock_three_four"
 	},
 	"option_three" = {
-		"question" : "I've seen some strange things.",
-		"answer" : "Heh heh... This is a strange place, maybe if you ask the right questions, you find some answers.",
-		"hide" : true,
+		"question" : "What's so special about the lake?",
+		"answer" : "Heh heh... This is a strange place, maybe if you ask the right questions, you may yet find some answers.",
+		"hide" : false,
 		"unlock" : "unlock_questions"
 	},
 	"option_four" = {
 		"question" : "Do you sell anything else?",
-		"answer" : "Hm... Perhaps you're ready, but be warned. Some things are worth more than all the money in the world.",
-		"hide" : true,
+		"answer" : "Hm... Perhaps you're ready, but be warned. Some things will take you deeper than you're prepared to go.",
+		"hide" : false,
 		"unlock" : "unlock_other_stuff"
 	},
 }
@@ -73,6 +73,13 @@ func _on_dialogue_button_pressed(button_text: String):
 func show_shopkeep(shopkeep_visible: bool):
 	children.back().visible = shopkeep_visible
 	children.front().visible = !shopkeep_visible
+
+func unlock_two():
+	option_two.visible = true
+	
+func unlock_three_four():
+	option_three.visible = true
+	option_four.visible = true
 
 func unlock_questions():
 	ask_questions.visible = true

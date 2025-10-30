@@ -1,7 +1,9 @@
 extends Node
 
+var intro_played: bool = false
+
 var health: int = 20
-var currency: int = 20
+var currency: int = 0
 var lore_counter: int = 0
 
 #additionary arrays to be appended to lake_stock

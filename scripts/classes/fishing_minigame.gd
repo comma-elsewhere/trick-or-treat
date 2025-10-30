@@ -11,7 +11,7 @@ signal fishing_finished(success: bool, fish: FishType, value: int)
 @onready var catch_bar: ColorRect        = %catchBar
 @onready var fish_icon: TextureRect      = %fishIcon
 @onready var progress: ProgressBar       = %progress
-@onready var label_name: Label           = %LabelFishName
+#@onready var label_name: Label           = %LabelFishName
 @onready var sfx_hook: AudioStreamPlayer  = %SFX
 @onready var sfx_catch: AudioStreamPlayer = %SFX2
 @onready var sfx_fail: AudioStreamPlayer  = %SFX3

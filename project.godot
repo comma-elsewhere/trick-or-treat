@@ -23,7 +23,6 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 Global="*res://scripts/global/global.gd"
 GConst="*res://scripts/global/global_const.gd"
-GlobalMusic="*res://scripts/global/global_music.gd"
 
 [display]
 
@@ -45,7 +44,7 @@ Audio=""
 [gui]
 
 theme/custom="uid://blg82ci3006mw"
-theme/custom_font="uid://hp3hr2gulx35"
+theme/custom_font="uid://bc2x2a0xjefwj"
 
 [input]
 

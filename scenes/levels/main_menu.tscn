@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfxas6r8q1svm" path="res://assets/visual/gui/import/window_12.png" id="4_keln3"]
 [ext_resource type="Texture2D" uid="uid://by1rjn0keln04" path="res://assets/backgrounds/titlescreen.png" id="8_cn35j"]
 [ext_resource type="Texture2D" uid="uid://bgoo5p6xien52" path="res://assets/visual/gui/import/play.png" id="9_wko7x"]
-[ext_resource type="AudioStream" uid="uid://crc85t8sskmgt" path="res://assets/audio/sound effects/WetClick1.mp3" id="10_wko7x"]
+[ext_resource type="AudioStream" uid="uid://bbk255aslbycv" path="res://assets/audio/music/Menu Theme.wav" id="10_wko7x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crctu"]
 texture = ExtResource("4_keln3")
@@ -625,8 +625,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_k0nyb")
 }
 
-[node name="WetClick" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_wko7x")
+autoplay = true
+bus = &"Music"
 
 [connection signal="button_up" from="MainMenu/Control/NewGame" to="." method="_on_new_game_button_up"]
 [connection signal="button_up" from="MainMenu/Control4/Quit" to="." method="_on_quit_button_up"]
@@ -634,3 +637,4 @@ stream = ExtResource("10_wko7x")
 [connection signal="button_up" from="Audio/BackButton" to="." method="_on_back_button_button_up"]
 [connection signal="button_up" from="Controls/BackButton" to="." method="_on_back_button_button_up"]
 [connection signal="button_up" from="Control/StartGameButton" to="." method="_on_start_game_button_button_up"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

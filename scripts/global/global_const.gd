@@ -88,7 +88,7 @@ var items: Dictionary = {
 	"Charm" = {
 		"name": "Five of Diamonds",
 		"icon": "res://assets/visual/final_icons/Jack_Ole_Diamond_Hook.png",
-		"value": 1,
+		"value": 10,
 		"description": "Apparently brings good luck.",
 		"type": "charm"
 	},

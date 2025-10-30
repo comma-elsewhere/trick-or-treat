@@ -28,9 +28,9 @@ func _physics_process(_delta: float) -> void:
 	if segment_index < water.segment_count:
 		global_position.y = water.segment_data[segment_index].height -48.0
 	
-	var dy = water.segment_data[segment_index+1].height - water.segment_data[segment_index - 1].height
-	var angle = atan2(dy,segment_length*2)
-	rotation = lerp_angle(rotation, angle, 0.1)
+		var dy = water.segment_data[segment_index+1].height - water.segment_data[segment_index - 1].height
+		var angle = atan2(dy,segment_length*2)
+		rotation = lerp_angle(rotation, angle, 0.1)
 	
 	if !player.disable_self:
 		var dir:= Input.get_axis("left","right")

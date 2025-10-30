@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var intro = load("res://assets/audio/music/Project_14 intro.mp3")
 var loop = load("res://assets/audio/music/Project_14 loop.mp3")
@@ -10,6 +10,7 @@ var audio_player: AudioStreamPlayer
 
 func _ready() -> void:
 	audio_player = AudioStreamPlayer.new()
+	audio_player.bus = "Music"
 	add_child(audio_player)
 	_play_intro()
 	
