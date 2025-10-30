@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5cvlnckop2jw" path="res://assets/visual/gui/import/window_7.png" id="2_qxonp"]
 [ext_resource type="Script" uid="uid://hdywt4ho514r" path="res://scripts/gui/inventory.gd" id="3_2pnwd"]
 [ext_resource type="Script" uid="uid://bqt2lvrt7qdhv" path="res://scripts/gui/inventory_grid.gd" id="3_aoesn"]
-[ext_resource type="Texture2D" uid="uid://cle0x1i5cr7u0" path="res://assets/visual/icons/bones/bg.png" id="3_ueg55"]
+[ext_resource type="Texture2D" uid="uid://cle0x1i5cr7u0" path="res://assets/visual/gui/bg.png" id="3_ueg55"]
 [ext_resource type="Texture2D" uid="uid://dw8d1ovvwy1qc" path="res://assets/visual/gui/import/chain.png" id="6_gbuxp"]
 [ext_resource type="Texture2D" uid="uid://cxwdivbiq0q6e" path="res://assets/visual/gui/import/window.png" id="7_2b3sj"]
 [ext_resource type="Script" uid="uid://brkb1uuvioo7u" path="res://scripts/gui/equipment.gd" id="8_2b3sj"]

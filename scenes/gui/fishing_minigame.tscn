@@ -82,6 +82,7 @@ shader_parameter/palette = ExtResource("6_ror43")
 shader_parameter/palette_speed = 0.1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3u1oq"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="FishingMinigame" type="CanvasLayer"]
 script = ExtResource("1_atuv8")
@@ -91,18 +92,23 @@ rod = ExtResource("3_03kqu")
 [node name="TextureRect2" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.09019608)
 material = SubResource("ShaderMaterial_s140s")
-offset_right = 1284.0
-offset_bottom = 716.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_nnu1u")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.019607844)
+z_index = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_03kqu")
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 1288.0
-offset_bottom = 723.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("ViewportTexture_3u1oq")
 
 [node name="Control" type="Control" parent="."]
@@ -133,6 +139,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="bar_track" type="ColorRect" parent="Control/catchArea"]
 unique_name_in_owner = true
+z_index = 2
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -150,6 +158,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="catchBar" type="ColorRect" parent="Control/catchArea"]
 unique_name_in_owner = true
+z_index = 2
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.509
@@ -165,6 +175,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="fishIcon" type="TextureRect" parent="Control/catchArea"]
 unique_name_in_owner = true
+z_index = 2
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.50955045
@@ -182,6 +194,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="progress" type="ProgressBar" parent="Control/catchArea"]
 unique_name_in_owner = true
+z_index = 2
+z_as_relative = false
 layout_mode = 0
 offset_left = 102.5
 offset_top = 299.8897
@@ -199,3 +213,16 @@ unique_name_in_owner = true
 
 [node name="SFX3" type="AudioStreamPlayer" parent="Control/catchArea"]
 unique_name_in_owner = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
