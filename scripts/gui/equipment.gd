@@ -5,14 +5,19 @@ extends TextureRect
 var current_rod_id = ""
 
 func _process(_delta: float) -> void:
-	if type == "Rod" and Global.current_rod_id != current_rod_id:
-		update_equipment()
+	#if type == "Rod" and Global.current_rod_id != current_rod_id:
+	if Global.equipment_dict[type] != null:
+		update_equipment(Global.equipment_dict[type])
 
-func update_equipment():
-	current_rod_id = Global.current_rod_id
-	
+func update_equipment(item: Dictionary):
+	texture = load(item.icon)
+	tooltip_text = item.name + "\n" + item.description
 	if type == "Rod":
-		texture = Global.get_rod_icon(current_rod_id)
-		var rod = Global.get_current_rod()
-		if rod:
-			tooltip_text = "Rod\nAccel: " + str(rod.bar_accel)
+		match item.name:
+			"Basic Rod":
+				Global.current_rod_id = "basic"
+			"Advanced Rod":
+				Global.current_rod_id = "advanced"
+			"Cursed Rod":
+				Global.current_rod_id = "cursed"
+		

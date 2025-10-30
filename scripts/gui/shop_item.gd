@@ -38,18 +38,18 @@ func _on_button_button_up() -> void:
 func _edit_equipment(new_item: Dictionary):
 	match new_item.type:
 		"rod":
-			var key = GConst.items.find_key(Global.equipment["Rod"])
+			var key = GConst.items.find_key(Global.equipment_dict["Rod"])
 			Global.inventory_stock.append(GConst.items[key])
-			Global.equipment["Rod"] = new_item
+			Global.equipment_dict["Rod"] = new_item
 		"hook":
-			var key = GConst.items.find_key(Global.equipment["Hook"])
+			var key = GConst.items.find_key(Global.equipment_dict["Hook"])
 			Global.inventory_stock.append(GConst.items[key])
-			Global.equipment["Hook"] = new_item
+			Global.equipment_dict["Hook"] = new_item
 		"charm":
-			if Global.equipment["Charm"] != null:
-				var key = GConst.items.find_key(Global.equipment["Charm"])
+			if Global.equipment_dict["Charm"] != null:
+				var key = GConst.items.find_key(Global.equipment_dict["Charm"])
 				Global.inventory_stock.append(GConst.items[key])
-			Global.equipment["Charm"] = new_item
+			Global.equipment_dict["Charm"] = new_item
 			
 	if new_item.name == "Advanced Rod" or new_item.name == "Normal Hook":
 		if !Global.lake_loot.is_empty():

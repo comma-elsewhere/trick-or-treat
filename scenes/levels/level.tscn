@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdwg6xevi8008"]
+[gd_scene load_steps=19 format=3 uid="uid://bdwg6xevi8008"]
 
 [ext_resource type="Script" uid="uid://b5dl8j1m6625q" path="res://scripts/classes/water.gd" id="1_ksju7"]
 [ext_resource type="AudioStream" uid="uid://cnsdejqgqukg8" path="res://assets/audio/sound effects/Water splash.mp3" id="1_xfk5q"]
@@ -6,13 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
 [ext_resource type="PackedScene" uid="uid://b42gamjua8r0l" path="res://scenes/levels/shop.tscn" id="5_5mi6g"]
-[ext_resource type="Script" uid="uid://c0c8i8msdv0c5" path="res://scripts/classes/fishing_zone.gd" id="5_urvlt"]
+[ext_resource type="Script" path="res://scripts/classes/fishing_zone.gd" id="5_urvlt"]
 [ext_resource type="Script" uid="uid://cxrhphrxluw50" path="res://scripts/classes/fishing_manager.gd" id="6_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://tr141j3qjva" path="res://scenes/gui/fishing_minigame.tscn" id="7_xfk5q"]
-[ext_resource type="Script" uid="uid://b8snc6akyrx32" path="res://scripts/classes/fish_type.gd" id="8_qogh7"]
+[ext_resource type="Script" path="res://scripts/classes/fish_type.gd" id="8_qogh7"]
 [ext_resource type="Resource" uid="uid://bxlx5j5i2ljcm" path="res://resources/item_pool/carp.tres" id="9_8iyoh"]
 [ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="10_mq31s"]
-[ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="11_5mi6g"]
 [ext_resource type="Script" uid="uid://b5obpb0wck06l" path="res://scripts/misc/drowning_zone.gd" id="14_8iyoh"]
 [ext_resource type="Texture2D" uid="uid://cdalqrde4efq2" path="res://assets/backgrounds/lake_bg.png" id="14_mq31s"]
 [ext_resource type="Script" uid="uid://biyjdj2bj8kwl" path="res://scripts/misc/shop_zone.gd" id="16_b8j7q"]
@@ -85,7 +84,6 @@ shape = SubResource("RectangleShape2D_xb4v1")
 script = ExtResource("6_7pb6i")
 fishing_minigame_scene = ExtResource("7_xfk5q")
 available_fish = Array[ExtResource("8_qogh7")]([ExtResource("9_8iyoh"), ExtResource("10_mq31s")])
-default_rod = ExtResource("11_5mi6g")
 
 [node name="DrowningZone" type="Area2D" parent="."]
 position = Vector2(266, 426)

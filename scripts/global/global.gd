@@ -12,8 +12,6 @@ var lake_special: Array[Dictionary] = []
 
 signal equipment_changed(slot: String)
 
-
-
 var rods: Dictionary = {
 	"basic": preload("res://resources/item_pool/basic_pole.tres"),
 	"advanced": preload("res://resources/item_pool/advancedrod.tres"),
@@ -63,10 +61,15 @@ var lake_stock: Array[Dictionary] = []
 var inventory_stock: Array[Dictionary] = []
 var upgrade_stock: Array[Dictionary] = []
 var mystery_stock: Array[Dictionary] = []
+var equipment_dict: Dictionary = {
+	"Rod" = null,
+	"Hook" = null,
+	"Charm" = null,
+}
 
 func _ready() -> void:
-	#equipment["Rod"] = GConst.items["BasicRod"]
-	#equipment["Hook"] = GConst.items["HookOne"]
+	equipment_dict["Rod"] = GConst.items["BasicRod"]
+	equipment_dict["Hook"] = GConst.items["HookOne"]
 	
 	upgrade_stock.append(GConst.items["Bait"])
 	upgrade_stock.append(GConst.items["HookTwo"])
