@@ -43,11 +43,7 @@ var _fish_seed: float
  
 func _ready():
 	_set_defaults()
- 
-func _unhandled_input(event):
-	if _state == STATE.HOOK:
-		if event.is_action_pressed("ui_accept") or event.is_action_pressed("attack"):
-			_on_hook()
+	_on_hook()
  
 func _update_input_bar(delta: float):
 	var up := Input.is_action_pressed("ui_accept") or Input.is_action_pressed("attack") or Input.is_action_pressed("ui_up")

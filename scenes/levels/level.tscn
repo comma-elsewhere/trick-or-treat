@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dmv1ervctafi5" path="res://scenes/gui/hud.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://bpd53eh8y0ugu" path="res://scenes/prefabs/boat.tscn" id="4_xb4v1"]
 [ext_resource type="PackedScene" uid="uid://b42gamjua8r0l" path="res://scenes/levels/shop.tscn" id="5_5mi6g"]
-[ext_resource type="Script" path="res://scripts/classes/fishing_zone.gd" id="5_urvlt"]
+[ext_resource type="Script" uid="uid://c0c8i8msdv0c5" path="res://scripts/classes/fishing_zone.gd" id="5_urvlt"]
 [ext_resource type="Script" uid="uid://cxrhphrxluw50" path="res://scripts/classes/fishing_manager.gd" id="6_7pb6i"]
 [ext_resource type="PackedScene" uid="uid://tr141j3qjva" path="res://scenes/gui/fishing_minigame.tscn" id="7_xfk5q"]
-[ext_resource type="Script" path="res://scripts/classes/fish_type.gd" id="8_qogh7"]
+[ext_resource type="Script" uid="uid://b8snc6akyrx32" path="res://scripts/classes/fish_type.gd" id="8_qogh7"]
 [ext_resource type="Resource" uid="uid://bxlx5j5i2ljcm" path="res://resources/item_pool/carp.tres" id="9_8iyoh"]
 [ext_resource type="Resource" uid="uid://dvpht2m5w2xkh" path="res://resources/item_pool/strange_fish.tres" id="10_mq31s"]
 [ext_resource type="Resource" uid="uid://cugr2ygq2aqdr" path="res://resources/item_pool/basic_pole.tres" id="11_5mi6g"]
@@ -43,8 +43,8 @@ water_size = Vector2(2500, 550)
 segment_count = 512
 player_splash_multiplier = 0.15
 wave_energy_loss = 0.02
-surface_color = Color(0.06578119, 0.26788738, 0.35308748, 1)
-water_fill_color = Color(0.07450981, 0.2, 0.23529412, 1)
+surface_color = Color(0.023890853, 0.15185776, 0.20522931, 1)
+water_fill_color = Color(0.040169425, 0.1328615, 0.15891218, 1)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_6iamk")]
@@ -104,11 +104,10 @@ metadata/_edit_lock_ = true
 [node name="LakeReflect" type="Sprite2D" parent="."]
 self_modulate = Color(0.36862746, 0.7411765, 1, 0.24313726)
 z_index = 2
-position = Vector2(1702, 279)
+position = Vector2(1733, 157)
 texture = ExtResource("14_mq31s")
 flip_h = true
 flip_v = true
-metadata/_edit_lock_ = true
 
 [node name="ShopZone" type="Area2D" parent="." node_paths=PackedStringArray("shop")]
 position = Vector2(136, -185)
@@ -123,3 +122,4 @@ shape = SubResource("RectangleShape2D_8iyoh")
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="DrowningZone" to="DrowningZone" method="_on_body_entered"]
+[connection signal="body_exited" from="ShopZone" to="ShopZone" method="_on_body_exited"]
