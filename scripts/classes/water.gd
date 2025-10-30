@@ -78,7 +78,7 @@ func _initiate_water() -> void:
 	
 	
 	timer = Timer.new()
-	timer.wait_time = randf_range(15.0, 60.0)
+	timer.wait_time = randf_range(5, 10)
 	timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	timer.autostart = true
 	add_child(timer)
@@ -175,7 +175,7 @@ func play_splash_sound_varied(splash_pos: Vector2):
 	
 func start_spooky_wave():
 	var segment_width: float = water_size.x / (segment_count - 1)
-	var start_x: float = randf_range(20.0, water_size.x - 30.0)
+	var start_x: float = randf_range(0, water_size.x - 30.0)
 	var end_x: float = start_x + 25.0
 	var range_x = int((end_x - start_x) / segment_width)
 	var omega = (end_x - start_x) / PI

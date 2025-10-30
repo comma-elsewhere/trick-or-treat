@@ -43,11 +43,7 @@ var _fish_seed: float
  
 func _ready():
 	_set_defaults()
- 
-func _unhandled_input(event):
-	if _state == STATE.HOOK:
-		if event.is_action_pressed("ui_accept") or event.is_action_pressed("attack"):
-			_on_hook()
+	_on_hook()
  
 func _update_input_bar(delta: float):
 	var up := Input.is_action_pressed("ui_accept") or Input.is_action_pressed("attack") or Input.is_action_pressed("ui_up")
@@ -146,7 +142,6 @@ func _fail(_why: String):
 func _success():
 	_state = STATE.END
 	sfx_catch.play()
-	label_name.show()
  
 	_shake(10.0, 0.25)
 	_punch_ui(root_ui, 1.12, 0.18)
@@ -180,7 +175,6 @@ func _set_catch_bar_visual():
 	catch_bar.global_position = Vector2(bar_track.global_position.x + bar_track.size.x*0.05, y_top)
  
 func _set_defaults():
-	label_name.text = fish.fish_name
 	bar_track.modulate = fish.tint.lerp(Color.DARK_BLUE, 0.5)
 	_bar_h = BASE_BAR_HEIGHT + rod.bar_size_bonus
 	_hook_window = BASE_HOOK_WINDOW * rod.hook_window_mult

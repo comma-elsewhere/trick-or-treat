@@ -9,12 +9,55 @@ var lake_loot: Array[Dictionary] = []
 var lake_strange: Array[Dictionary] = []
 var lake_special: Array[Dictionary] = []
 
-var equipment: Dictionary = {
-	"Rod" = null,
-	"Hook" = null,
-	"Charm" = null
+
+signal equipment_changed(slot: String)
+
+
+
+var rods: Dictionary = {
+	"basic": preload("res://resources/item_pool/basic_pole.tres"),
+	"advanced": preload("res://resources/item_pool/advancedrod.tres"),
+	"cursed": preload("res://resources/item_pool/cursedrod.tres")
 }
 
+var current_rod_id: String = "advanced" 
+
+var equipment = {
+	"Rod": preload("res://resources/item_pool/cursedrod.tres"),
+	"Hook": null,
+	"Charm": null
+}
+
+func equip_item(slot: String, item):
+	equipment[slot] = item
+	equipment_changed.emit(slot)
+	
+var rod_icons = {
+	"basic": preload("res://assets/visual/final_icons/Beginner_Rod.png"),
+	"advanced": preload("res://assets/visual/final_icons/Advanced_Rod.png"),
+	"cursed": preload("res://assets/visual/final_icons/Cursed_Rod.png")
+}
+
+func get_rod_icon(rod_id: String) -> Texture2D:
+	return rod_icons.get(rod_id)
+
+
+
+func get_current_rod() -> RodType:
+	if current_rod_id in rods:
+		return rods[current_rod_id]
+	
+	push_warning("Rod '%s' not found, using basic" % current_rod_id)
+	return rods["basic"]
+
+func equip_rod(rod_id: String):
+	if rod_id in rods:
+		current_rod_id = rod_id
+		equipment["Rod"] = rods[rod_id]  # ← Actualizar equipment también
+		print("Equipped rod: ", rod_id)
+	else:
+		push_error("Rod '%s' doesn't exist!" % rod_id)
+		
 #various stocked inventories
 var lake_stock: Array[Dictionary] = []
 var inventory_stock: Array[Dictionary] = []
@@ -22,8 +65,8 @@ var upgrade_stock: Array[Dictionary] = []
 var mystery_stock: Array[Dictionary] = []
 
 func _ready() -> void:
-	equipment["Rod"] = GConst.items["BasicRod"]
-	equipment["Hook"] = GConst.items["HookOne"]
+	#equipment["Rod"] = GConst.items["BasicRod"]
+	#equipment["Hook"] = GConst.items["HookOne"]
 	
 	upgrade_stock.append(GConst.items["Bait"])
 	upgrade_stock.append(GConst.items["HookTwo"])
